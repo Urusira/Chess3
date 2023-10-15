@@ -8,15 +8,21 @@
         Icon="Assets/icon.png"
         WindowStartupLocation="CenterScreen"
         Background="#202020">
+    <!-- Вьюбокс масштабирует всё содержимое внутри себя при изменении размера
+    окна -->
     <Viewbox>
+        <!-- Короче чтоб изменять картинки надо в обозревателе решений
+        дважды кликнуть по самому решению, то есть по GameUI
+        Там будут ресурс инклуды, в них прописаны пути к текущим текстуркам
+        Сами текстурки лежат в папке assets внутри гейм юи-->
         <Grid x:Name="BoardGrid" Width="600" Height="600">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/Board.png"  />
             </Grid.Background>
-
+<!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
             <UniformGrid x:Name="HighlightGrid" Rows="8" Columns="8">
             </UniformGrid>
-
+<!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
             <UniformGrid x:Name="PieceGrid" Rows="8" Columns="8">
                 <Image Source="Assets/BishopW.png" />
                 <Image Source="Assets/BishopW.png" />
