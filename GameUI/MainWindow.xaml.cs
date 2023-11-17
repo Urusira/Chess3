@@ -19,8 +19,10 @@ namespace GameUI
     public partial class MainWindow : Window
     {
         private readonly Image[,] pieceImages = new Image[8, 8]; // Массив изображений
+        private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
         private GameState gameState;    // Создаём гейм стейт
+        private Position selectedPos = null;
 
         public MainWindow()
         {
@@ -68,6 +70,88 @@ namespace GameUI
                     Piece piece = board[i,j];
                     pieceImages[i,j].Source = Images.GetImage(piece);
                 }
+            }
+        }
+
+        /*
+         * Метод обрабатывает нажатия клавишей мыши внутри окна и в зависимости от того, есть в данный
+         * момент выбранная фигура или нет, вызывает соответствующий метод, передавая позицию клика.
+         * Тут же вызывается преобразование позиции курсора
+         */
+        private void BoardGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point point = e.GetPosition(BoardGrid);
+            Position pos = ToSquarePosition(point);
+
+            if (selectedPos == null)
+            {
+                OnFromPositionSelected(pos);
+            }
+            else
+            {
+                OnToPositionSelected(pos);
+            }
+        }
+
+        // "Квадратизирует" позицию клика, мы получаем размер доски, делим на 8, получаем размер квадрата
+        // на полученное значение мы делим положение курсора по X и по Y, возвращает положение курсора
+        // преобразованное в формат клеток доски
+        private Position ToSquarePosition(Point point)
+        {
+            double squareSize = BoardGrid.ActualWidth / 8;
+            int row = (int)(point.Y / squareSize);
+            int col = (int)(point.X / squareSize);
+            return new Position(row, col);
+        }
+
+        /*
+         * Вызывается в случае, если выбранной позиции нет, то есть метод отвечает за выбор
+         * фигуры, которой мы хотим сходить. При его вызове, происходит проссчёт всех возможных ходов для фигуры в заданной позиции.
+         * Так же вызываемый метод LegalMoves не возвращает ничего, если выбрана фигура противника или пустая клетка.
+         */
+        private void OnFromPositionSelected(Position pos)
+        {
+            IEnumerable<Move> moves = gameState.LegalMoves(pos);
+
+            if (moves.Any())
+            {
+                selectedPos = pos;
+                CacheMoves(moves);
+            }
+        }
+
+        /*
+         * Этот метод соотносит нажатие пользователя. Он смотрит, есть ли в данный момент в кэше ход для позиции клика
+         * Если такой ход существует, то этот ход передаётся в хэндл, который и реализует ход
+         */
+        private void OnToPositionSelected(Position pos)
+        {
+            selectedPos = null;
+
+            if (moveCache.TryGetValue(pos, out Move move))
+            {
+                HandleMove(move);
+            }
+        }
+
+        // Просто хэндл. Почему хэндл? Фиг знает, просто. Вызывает метод совершения хода, говорит геймстейту что игрок хочет
+        // сделать ход и передаём ему ход, который хотим. Следом идёт переотрисовка доски.
+        private void HandleMove(Move move)
+        {
+            gameState.MakeMove(move);
+            DrawBoard(gameState.Board);
+        }
+
+        /*
+         * Этот метод получает для выбранной фигуры коллекцию всех допустимых ходов для выбранной позиции
+         */
+        private void CacheMoves(IEnumerable<Move> moves)
+        {
+            moveCache.Clear();
+
+            foreach (Move move in moves)
+            {
+                moveCache[move.ToPos] = move;
             }
         }
     }

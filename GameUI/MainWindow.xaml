@@ -15,7 +15,7 @@
         дважды кликнуть по самому решению, то есть по GameUI
         Там будут ресурс инклуды, в них прописаны пути к текущим текстуркам
         Сами текстурки лежат в папке assets внутри гейм юи-->
-        <Grid x:Name="BoardGrid" Width="600" Height="600">
+        <Grid x:Name="BoardGrid" Width="600" Height="600" MouseDown="BoardGrid_MouseDown">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/Board.png"  />
             </Grid.Background>
