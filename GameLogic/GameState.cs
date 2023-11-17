@@ -10,5 +10,28 @@
             CurrentPlayer = player;
             Board = board;
         }
+
+        /*
+         * В этом методе мы получаем все возможные ходы для заданной позиции. В случае, если идёт попытка
+         * рассчёта для пустой клетки или фигуры цвета, не соответствующего текущему игроку, метод
+         * ничего не делает, выдавая пустоту.
+         * Если же всё в порядке, то метод получает фигуру в заданной позиции и вызывает у неё метод получения всех ходов.
+         */
+        public IEnumerable<Move> LegalMoves(Position pos)
+        {
+            if (Board.IsEmpty(pos) || Board[pos].Color != CurrentPlayer)
+            {
+                return Enumerable.Empty<Move>();
+            }
+
+            Piece piece = Board[pos];
+            return piece.GetMoves(pos, Board);
+        }
+
+        public void MakeMove(Move move)
+        {
+            move.Execute(Board);
+           // ЗДЕСЬ НАДО ВСТАВИТЬ ВЫЗОВ ФУНКЦИИ СМЕНЫ ИГРОКА
+        }
     }
 }

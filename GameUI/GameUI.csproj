@@ -7,6 +7,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<Resource Include="Assets\BishopB.png" />
 		<Resource Include="Assets\BishopW.png" />

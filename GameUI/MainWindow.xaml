@@ -20,26 +20,12 @@
                 <ImageBrush ImageSource="Assets/Board.png"  />
             </Grid.Background>
 <!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
-            <UniformGrid x:Name="HighlightGrid" Rows="8" Columns="8">
+            <UniformGrid x:Name="HighlightGrid" Width="590" Height="590" Rows="8" Columns="8">
             </UniformGrid>
 <!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
-            <UniformGrid x:Name="PieceGrid" Rows="8" Columns="8">
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
-                <Image Source="Assets/BishopW.png" />
+
+            <UniformGrid x:Name="PieceGrid" Width="590" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality">
+
             </UniformGrid>
         </Grid>
     </Viewbox>
