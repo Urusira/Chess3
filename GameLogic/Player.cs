@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameLogic
+﻿namespace GameLogic
 {
     public enum Player
     {
@@ -13,9 +7,15 @@ namespace GameLogic
         Black
     }
 
-    static class PlayerExtensions
+    public static class PlayerExtensions
     {
-        // МИША, БАХНИ ЗДЕСЬ ФУНКЦИЮ СМЕНЫ ТЕКУЩЕГО ИГРОКА С ЧЁРНОГО НА БЕЛОГО
-        // ЕСЛИ ЧЁ Я И ТАК ЗНАЮ КАК ЭТО СДЕЛАТЬ, НО ЭТО ДВОЯ ЗАДАЧА
+        public static Player swap(Player Current_player)
+        {
+            switch (Current_player){
+                case Player.White: return Player.Black;
+                case Player.Black: return Player.White;
+                default: return Current_player;
+            }
+        }
     }
 }

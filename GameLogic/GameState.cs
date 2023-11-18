@@ -31,7 +31,7 @@
         public void MakeMove(Move move)
         {
             move.Execute(Board);
-           // ЗДЕСЬ НАДО ВСТАВИТЬ ВЫЗОВ ФУНКЦИИ СМЕНЫ ИГРОКА
+            PlayerExtensions.swap(CurrentPlayer);
         }
     }
 }
