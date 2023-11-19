@@ -1,4 +1,6 @@
-﻿namespace GameLogic
+﻿using System.Drawing;
+
+namespace GameLogic
 {
     public class GameState
     {
@@ -31,7 +33,7 @@
         public void MakeMove(Move move)
         {
             move.Execute(Board);
-           // ЗДЕСЬ НАДО ВСТАВИТЬ ВЫЗОВ ФУНКЦИИ СМЕНЫ ИГРОКА
+            CurrentPlayer = CurrentPlayer.swap();
         }
     }
 }
