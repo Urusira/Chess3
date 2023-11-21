@@ -19,6 +19,7 @@ namespace GameUI
     public partial class MainWindow : Window
     {
         private readonly Image[,] pieceImages = new Image[8, 8]; // Массив изображений
+        private readonly Rectangle[,] highlights = new Rectangle[8, 8]; 
         private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
         private GameState gameState;    // Создаём гейм стейт
@@ -52,6 +53,10 @@ namespace GameUI
                     Image image = new Image();
                     pieceImages[i, j] = image;
                     PieceGrid.Children.Add(image);
+
+                    Rectangle highlight = new Rectangle();
+                    highlights[i, j] = highlight;
+                    HighlightGrid.Children.Add(highlight);
                 }
             }
         }
@@ -69,6 +74,8 @@ namespace GameUI
                 {
                     Piece piece = board[i,j];
                     pieceImages[i,j].Source = Images.GetImage(piece);
+
+                    HideHighLights();
                 }
             }
         }
@@ -117,6 +124,7 @@ namespace GameUI
             {
                 selectedPos = pos;
                 CacheMoves(moves);
+                ShowHighlights();
             }
         }
 
@@ -152,6 +160,29 @@ namespace GameUI
             foreach (Move move in moves)
             {
                 moveCache[move.ToPos] = move;
+            }
+        }
+
+        /*
+         * В этом методе выбирается в альфа-ргб палитре цвет для выделения клеток, а также
+         * происходит сама подсветка: перебираются все позиции находящиеся в данный момент в кэше и каждая из этих позиций подсвечивается
+         */
+        private void ShowHighlights()
+        {
+            Color color = Color.FromArgb(150, 125, 255, 125);
+
+            foreach (Position to in moveCache.Keys)
+            {
+                highlights[to.Row, to.Column].Fill = new SolidColorBrush(color);
+            }
+        }
+
+        // В этом же методе перебираются все позиции, находящиеся в данный момент в кеше и их выделение стирается
+        private void HideHighLights()
+        {
+            foreach (Position to in moveCache.Keys)
+            {
+                highlights[to.Row, to.Column].Fill = Brushes.Transparent;
             }
         }
     }
