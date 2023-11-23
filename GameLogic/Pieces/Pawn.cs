@@ -69,7 +69,7 @@ namespace GameLogic
 
                 Position twoMovesPos = oneMovePos + forward;
 
-                if (!HasMoved && CanMoveTo(twoMovesPos, board))
+                if ((from.Row == 6 || from.Row == 1) && CanMoveTo(twoMovesPos, board))
                 {
                     yield return new NormalMove(from, twoMovesPos);
                 }
