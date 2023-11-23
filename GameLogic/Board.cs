@@ -42,8 +42,8 @@
             this[7, 0] = new Rook(Player.White);
             this[7, 1] = new Knight(Player.White);
             this[7, 2] = new Bishop(Player.White);
-            this[7, 3] = new King(Player.White);
-            this[7, 4] = new Queen(Player.White);
+            this[7, 3] = new Queen(Player.White);
+            this[7, 4] = new King(Player.White);
             this[7, 5] = new Bishop(Player.White);
             this[7, 6] = new Knight(Player.White);
             this[7, 7] = new Rook(Player.White);

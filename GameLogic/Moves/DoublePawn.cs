@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameLogic
 {
-    public enum MoveType
+    public class DoublePawn
     {
-        Normal,
-        CastleKingSide,
-        CastleQueenSide,
-        DoublePawn,
-        EnPassant,
-        PawnPromotion
     }
 }

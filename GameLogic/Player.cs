@@ -13,11 +13,16 @@ namespace GameLogic
         Black
     }
 
-    static class PlayerExtensions
+    public static class PlayerExtensions
     {
-        public static Player SwitchPlayer(this Player player)
+        public static Player swap(this Player Current_player)
         {
-            /*МИША, добавь сюда свичкейс смены игрока. Я кнш шарю как сделать смену игрока, но это всё же твоя задача, не хочу её выполнять за тебя, просто дам подсказку*/
+            switch (Current_player)
+            {
+                case Player.White: return Player.Black;
+                case Player.Black: return Player.White;
+                default: return Current_player;
+            }
         }
     }
 }
