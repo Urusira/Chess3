@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Chess 3" Width="800" SizeToContent="Height"
+        Title="Chess 3" Width="800" Height="600"  SizeToContent="Height"
         Icon="Assets/icon.png"
         WindowStartupLocation="CenterScreen"
         Background="#202020">
@@ -19,14 +19,21 @@
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/Board.png"  />
             </Grid.Background>
-<!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
+            <!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
             <UniformGrid x:Name="HighlightGrid" Width="590" Height="590" Rows="8" Columns="8">
             </UniformGrid>
-<!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
+            <!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
 
             <UniformGrid x:Name="PieceGrid" Width="590" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality">
 
             </UniformGrid>
+            <Button x:Name="Cansel_Button" Content="Back" HorizontalAlignment="Left" Height="28" Margin="404,0,0,0" VerticalAlignment="Center" Width="84"
+                Background="#FF64CCF1"
+                Foreground="White"
+                FontFamily="Arial"
+                Visibility="Hidden"
+                FontSize="20"  Click="Button_Click"/>
         </Grid>
+
     </Viewbox>
 </Window>

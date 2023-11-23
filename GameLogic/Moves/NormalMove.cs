@@ -10,8 +10,8 @@ namespace GameLogic
     {
         // Перезаписываем все характеристики наследованного класса
         public override MoveType Type => MoveType.Normal;
-        public override Position FromPos { get;  }
-        public override Position ToPos { get;  }
+        public override Position FromPos { get; set; }
+        public override Position ToPos { get; set; }
 
         // В конструкторе запиываем полученные позиции начальной и конечной позиций хода
         public NormalMove(Position from, Position to)

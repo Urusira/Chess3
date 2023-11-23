@@ -19,11 +19,12 @@ namespace GameUI
     public partial class MainWindow : Window
     {
         private readonly Image[,] pieceImages = new Image[8, 8]; // Массив изображений
-        private readonly Rectangle[,] highlights = new Rectangle[8, 8]; 
+        private readonly Rectangle[,] highlights = new Rectangle[8, 8];
         private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
         private GameState gameState;    // Создаём гейм стейт
         private Position selectedPos = null;
+        NormalMove moveBack = new NormalMove(null, null);
 
         public MainWindow()
         {
@@ -48,7 +49,7 @@ namespace GameUI
         {
             for (int i = 0; i < 8; i++)
             {
-                for(int j = 0; j < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     Image image = new Image();
                     pieceImages[i, j] = image;
@@ -68,12 +69,12 @@ namespace GameUI
          */
         private void DrawBoard(Board board)
         {
-            for( int i = 0;i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
-                for( int j = 0; j < 8;j++)
+                for (int j = 0; j < 8; j++)
                 {
-                    Piece piece = board[i,j];
-                    pieceImages[i,j].Source = Images.GetImage(piece);
+                    Piece piece = board[i, j];
+                    pieceImages[i, j].Source = Images.GetImage(piece);
 
                     HideHighLights();
                 }
@@ -146,6 +147,9 @@ namespace GameUI
         // сделать ход и передаём ему ход, который хотим. Следом идёт переотрисовка доски.
         private void HandleMove(Move move)
         {
+            Cansel_Button.Visibility = Visibility.Visible;
+            moveBack.ToPos = move.FromPos;
+            moveBack.FromPos = move.ToPos;
             gameState.MakeMove(move);
             DrawBoard(gameState.Board);
         }
@@ -184,6 +188,15 @@ namespace GameUI
             {
                 highlights[to.Row, to.Column].Fill = Brushes.Transparent;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Cansel_Button.Visibility = Visibility.Hidden;
+            gameState.MakeMove(moveBack);
+            DrawBoard(gameState.Board);
+            HideHighLights();
+            moveCache.Clear();
         }
     }
 }
