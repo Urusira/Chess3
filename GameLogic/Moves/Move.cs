@@ -14,8 +14,8 @@ namespace GameLogic
     public abstract class Move
     {
         public abstract MoveType Type { get; }
-        public abstract Position FromPos { get; }
-        public abstract Position ToPos { get; }
+        public abstract Position FromPos { get; set; }
+        public abstract Position ToPos { get; set; }
 
 
         public abstract void Execute(Board board);
