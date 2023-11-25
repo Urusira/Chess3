@@ -33,7 +33,8 @@
                 FontFamily="Arial"
                 IsEnabled="False"
                 FontSize="20"  Click="Button_Click"/>
+            
+            <ContentControl x:Name="MenuContainer"/>
         </Grid>
-
     </Viewbox>
 </Window>
