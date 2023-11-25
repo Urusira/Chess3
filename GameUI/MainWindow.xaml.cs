@@ -196,7 +196,7 @@ namespace GameUI
                 gameState.MakeReverseMove(moveLogger.Values.Last());
                 moveLogger.Remove(moveLogger.Values.Last().kex);
             }
-            if(moveLogger.Count() == 1)
+            else
             {
                 gameState.MakeReverseMove(moveLogger.Values.Last());
                 moveLogger.Remove(moveLogger.Values.Last().kex);
