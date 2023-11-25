@@ -24,7 +24,7 @@ namespace GameUI
 
         private GameState gameState;    // Создаём гейм стейт
         private Position selectedPos = null;
-        NormalMove moveBack = new NormalMove(null, null);
+        private Dictionary<string, Move> moveLogger = new Dictionary<string, Move>();
 
         public MainWindow()
         {
@@ -147,9 +147,8 @@ namespace GameUI
         // сделать ход и передаём ему ход, который хотим. Следом идёт переотрисовка доски.
         private void HandleMove(Move move)
         {
-            Cansel_Button.Visibility = Visibility.Visible;
-            moveBack.ToPos = move.FromPos;
-            moveBack.FromPos = move.ToPos;
+            Cansel_Button.IsEnabled = true;
+            moveLogger[move.kex] = move;
             gameState.MakeMove(move);
             DrawBoard(gameState.Board);
         }
@@ -192,11 +191,21 @@ namespace GameUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Cansel_Button.Visibility = Visibility.Hidden;
-            gameState.MakeMove(moveBack);
-            DrawBoard(gameState.Board);
-            HideHighLights();
+            if (moveLogger.Count() > 1)
+            {
+                gameState.MakeReverseMove(moveLogger.Values.Last());
+                moveLogger.Remove(moveLogger.Values.Last().kex);
+            }
+            if(moveLogger.Count() == 1)
+            {
+                gameState.MakeReverseMove(moveLogger.Values.Last());
+                moveLogger.Remove(moveLogger.Values.Last().kex);
+                Cansel_Button.IsEnabled = false;
+            }
+            selectedPos = null;
             moveCache.Clear();
+            HideHighLights();
+            DrawBoard(gameState.Board);
         }
     }
 }

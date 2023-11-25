@@ -35,5 +35,10 @@ namespace GameLogic
             move.Execute(Board);
             CurrentPlayer = CurrentPlayer.swap();
         }
+        public void MakeReverseMove(Move move)
+        {
+            move.ReverseExecute(Board);
+            CurrentPlayer = CurrentPlayer.swap();
+        }
     }
 }

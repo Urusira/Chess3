@@ -31,7 +31,7 @@
                 Background="#FF64CCF1"
                 Foreground="White"
                 FontFamily="Arial"
-                Visibility="Hidden"
+                IsEnabled="False"
                 FontSize="20"  Click="Button_Click"/>
         </Grid>
 
