@@ -145,7 +145,14 @@ namespace GameUI
 
             if (moveCache.TryGetValue(pos, out Move move))
             {
-                HandleMove(move);
+                if(move.Type == MoveType.PawnPromotion)
+                {
+                    HandlePromotion(move.FromPos, move.ToPos);
+                }
+                else
+                {
+                    HandleMove(move);
+                }
             }
         }
 
@@ -163,6 +170,22 @@ namespace GameUI
                 ShowGameOver();
             }
         }
+        private void HandlePromotion(Position from, Position to)
+        {
+            pieceImages[to.Row, to.Column].Source = Images.GetImage(gameState.CurrentPlayer, PieceType.Pawn);
+            pieceImages[from.Row, from.Column].Source = null;
+
+            PromotionMenu promMenu = new PromotionMenu(gameState.CurrentPlayer);
+            MenuContainer.Content = promMenu;
+
+            promMenu.PieceSelected += type =>
+            {
+                MenuContainer.Content = null;
+                Move promMove = new PawnPromiton(from, to, type);
+                HandleMove(promMove);
+            };
+        }
+
 
         /*
          * Этот метод получает для выбранной фигуры коллекцию всех допустимых ходов для выбранной позиции
