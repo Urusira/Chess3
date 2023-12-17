@@ -280,7 +280,8 @@ namespace GameUI
             moveCache.Clear();
             gameState = new GameState(Player.White, Board.Initial());
             DrawBoard(gameState.Board);
-            
+            moveLogger.Clear();
+            Cansel_Button.IsEnabled = false;
         }
     }
 }
