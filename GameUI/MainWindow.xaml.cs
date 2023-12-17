@@ -206,6 +206,14 @@ namespace GameUI
          */
         private void ShowHighlights()
         {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    highlights[i, j].Fill = Brushes.Transparent;
+                }
+            }
+
             Color color = Color.FromArgb(150, 125, 255, 125);
 
             foreach (Position to in moveCache.Keys)

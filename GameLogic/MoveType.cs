@@ -11,7 +11,6 @@ namespace GameLogic
         Normal,
         CastleKingSide,
         CastleQueenSide,
-        EnPassant,
         PawnPromotion
     }
 }

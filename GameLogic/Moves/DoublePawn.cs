@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameLogic.Moves
 {
-    public class EnPassant : Move
+    internal class DoublePawn
     {
-        
     }
 }
