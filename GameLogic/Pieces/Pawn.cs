@@ -65,13 +65,23 @@ namespace GameLogic
 
             if (CanMoveTo(oneMovePos, board))
             {
-                yield return new NormalMove(from, oneMovePos);
-
-                Position twoMovesPos = oneMovePos + forward;
-
-                if ((from.Row == 6 || from.Row == 1) && CanMoveTo(twoMovesPos, board))
+                if ((from.Row == 6 && board[from].Color == Player.White) || (from.Row == 1 && board[from].Color == Player.Black))
                 {
-                    yield return new NormalMove(from, twoMovesPos);
+                    yield return new PawnPromiton(from,oneMovePos, PieceType.Rook);
+                    yield return new PawnPromiton(from,oneMovePos, PieceType.Knight);
+                    yield return new PawnPromiton(from,oneMovePos, PieceType.Bishop);
+                    yield return new PawnPromiton(from,oneMovePos, PieceType.Queen);
+                }
+                else
+                {
+                    yield return new NormalMove(from, oneMovePos);
+
+                    Position twoMovesPos = oneMovePos + forward;
+
+                    if ((from.Row == 6 || from.Row == 1) && CanMoveTo(twoMovesPos, board))
+                    {
+                        yield return new NormalMove(from, twoMovesPos);
+                    }
                 }
             }
         }
@@ -89,7 +99,17 @@ namespace GameLogic
 
                 if (CanCaptureAt(to, board))
                 {
-                    yield return new NormalMove(from, to);
+                    if ((from.Row == 6 && board[from].Color == Player.White) || (from.Row == 1 && board[from].Color == Player.Black))
+                    {
+                        yield return new PawnPromiton(from, to, PieceType.Rook);
+                        yield return new PawnPromiton(from, to, PieceType.Knight);
+                        yield return new PawnPromiton(from, to, PieceType.Bishop);
+                        yield return new PawnPromiton(from, to, PieceType.Queen);
+                    }
+                    else
+                    {
+                        yield return new NormalMove(from, to);
+                    }
                 }
             }
         }
