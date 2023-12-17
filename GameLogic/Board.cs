@@ -6,6 +6,8 @@
     {
         private readonly Piece[,] pieces = new Piece[8, 8];
 
+        public bool EnPas = false;
+
         public Piece this[int row, int col]
         {
             get { return pieces[row, col]; }

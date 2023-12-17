@@ -16,6 +16,7 @@ namespace GameLogic
         public override string kex { get; }
 
         public Piece EatenPiece = null;
+        public Piece piece;
         // Тип новой фигуры
         private readonly PieceType newType;
         
@@ -50,7 +51,7 @@ namespace GameLogic
         }
         public override void ReverseExecute(Board board)
         {
-            board[FromPos] = board[ToPos];
+            board[FromPos] = new Pawn(board[ToPos].Color);
             board[ToPos] = EatenPiece;
         }
     }
