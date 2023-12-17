@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace GameLogic
 {
+    // Преборазование пешки в более сильную фигуру
     public class PawnPromiton : Move
     {
         public override MoveType Type => MoveType.PawnPromotion;
         public override Position FromPos { get; set; }
         public override Position ToPos { get; set; }
         public override string kex { get; }
-        public override void ReverseExecute(Board board) { }
+
+        public Piece EatenPiece = null;
+        // Тип новой фигуры
         private readonly PieceType newType;
         
         public PawnPromiton(Position from, Position to, PieceType newType)
@@ -23,25 +26,11 @@ namespace GameLogic
             this.newType = newType;
             kex = Guid.NewGuid().ToString();
         }
-        
-        /*
-        private Piece CreatePromotionPiece(Player color)
-        {
-            return newType switch
-            {
-                PieceType.Knight => new Knight(color),
-                PieceType.Bishop => new Bishop(color),
-                PieceType.Rook => new Rook(color),
-                PieceType.Queen => new Queen(color)
-            };
-        }
-        */
-
         public override void Execute(Board board)
         {
             Player Cur = board[FromPos].Color;
             board[FromPos] = null;
-            //board[ToPos] = CreatePromotionPiece(Cur);
+            EatenPiece = board[ToPos];
             switch (newType)
             {
                 case PieceType.Knight:
@@ -58,6 +47,11 @@ namespace GameLogic
                     break;
             };
             board[ToPos].HasMoved = true;
+        }
+        public override void ReverseExecute(Board board)
+        {
+            board[FromPos] = board[ToPos];
+            board[ToPos] = EatenPiece;
         }
     }
 }
