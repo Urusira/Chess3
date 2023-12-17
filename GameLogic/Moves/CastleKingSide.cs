@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace GameLogic
 {
+    // Рокировка со стороны короля
     public class CastleKingSide : Move
     {
         public override MoveType Type => MoveType.CastleKingSide;
         public override Position FromPos { get; set; }
         public override Position ToPos { get; set; }
         public override string kex { get; }
-        public override void ReverseExecute(Board board) { }
 
         private readonly Position rookFromPos;
         private readonly Position rookToPos;
@@ -30,6 +30,15 @@ namespace GameLogic
         {
             new NormalMove(FromPos, ToPos).Execute(board);
             new NormalMove(rookFromPos, rookToPos).Execute(board);
+        }
+        public override void ReverseExecute(Board board)
+        {
+            board[rookFromPos] = board[rookToPos];
+            board[rookFromPos].HasMoved = false;
+            board[rookToPos] = null;
+            board[FromPos] = board[ToPos];
+            board[FromPos].HasMoved = false;
+            board[ToPos] = null;
         }
     }
 }

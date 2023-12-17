@@ -57,6 +57,7 @@ namespace GameLogic
 
         /*
          * Метод отвечает за движение перёд. Если фигура может сходить, то метод возвращает один ход на одну клетку вперёд,
+         * если пешка ходит на последнюю клетку, то происходит преобразование пешку в более сильную фигуру
          * если фигура ранее не ходила, и может сделать ещё один ход, то возвращается ещё один ход сразу же следом.
          */
         private IEnumerable<Move> ForwardMoves(Position from, Board board)
@@ -65,7 +66,7 @@ namespace GameLogic
 
             if (CanMoveTo(oneMovePos, board))
             {
-                if ((from.Row == 6 && board[from].Color == Player.White) || (from.Row == 1 && board[from].Color == Player.Black))
+                if (oneMovePos.Row == 0 || oneMovePos.Row == 7)
                 {
                     yield return new PawnPromiton(from,oneMovePos, PieceType.Rook);
                     yield return new PawnPromiton(from,oneMovePos, PieceType.Knight);
@@ -89,7 +90,8 @@ namespace GameLogic
         /*
          * Меьлж перебирает циклом два диагональных направления (вернее он рассматривает клетку слева и клетку справа
          * относительно клетки перед фигурой), смотрит, может ли фигура съесть ту фигуру, которая будет стоять
-         * слева или справа и возвращает эти позиции как потенциальные ходы
+         * слева или справа и возвращает эти позиции как потенциальные ходы,
+         * а также если пешка переходит в последнюю строку, то происходит преобразование пешки в более сильную фигуру
          */
         private IEnumerable<Move> DiagonalMoves(Position from, Board board)
         {
@@ -99,7 +101,7 @@ namespace GameLogic
 
                 if (CanCaptureAt(to, board))
                 {
-                    if ((from.Row == 6 && board[from].Color == Player.White) || (from.Row == 1 && board[from].Color == Player.Black))
+                    if (to.Row == 0 || to.Row == 7)
                     {
                         yield return new PawnPromiton(from, to, PieceType.Rook);
                         yield return new PawnPromiton(from, to, PieceType.Knight);
