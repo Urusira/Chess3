@@ -86,7 +86,7 @@ namespace GameUI
          * момент выбранная фигура или нет, вызывает соответствующий метод, передавая позицию клика.
          * Тут же вызывается преобразование позиции курсора
          */
-        private void BoardGrid_MouseDown(object sender, MouseEventArgs e)
+        private void PieceGrid_MouseDown(object sender, MouseEventArgs e)
         {
             if (!IsMenuOnScreen())
             {
@@ -94,7 +94,7 @@ namespace GameUI
             }
 
 
-            Point point = e.GetPosition(BoardGrid);
+            Point point = e.GetPosition(PieceGrid);
             Position pos = ToSquarePosition(point);
 
             if (selectedPos == null)
@@ -112,9 +112,9 @@ namespace GameUI
         // преобразованное в формат клеток доски
         private Position ToSquarePosition(Point point)
         {
-            double squareSize = BoardGrid.ActualHeight / 8;
+            double squareSize = PieceGrid.ActualHeight / 8;
             int row = (int)(point.Y / squareSize);
-            int col = (int)((point.X - 200) / squareSize);
+            int col = (int)(point.X / squareSize);
             return new Position(row, col);
         }
 
