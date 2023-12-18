@@ -62,37 +62,6 @@
             {
                 yield return new NormalMove(from, to);
             }
-            if (board[from].HasMoved == false && board[from.Row, 7].HasMoved == false)
-            {
-                Position pos1 = new Position(from.Row, 5);
-                Position pos2 = new Position(from.Row, 6);
-                Player player = board[from].Color;
-                if (board.IsEmpty(pos1) && board.IsEmpty(pos2) && !board.IsInCheck(player))
-                {
-                    yield return new CastleKingSide(from);
-                }
-            }
-            if (board[from].HasMoved == false && board[from.Row, 0].HasMoved == false)
-            {
-                Position pos1 = new Position(from.Row, 1);
-                Position pos2 = new Position(from.Row, 2);
-                Position pos3 = new Position(from.Row, 3);
-                Player player = board[from].Color;
-                if (board.IsEmpty(pos1) && board.IsEmpty(pos2) && board.IsEmpty(pos3) && !board.IsInCheck(player))
-                {
-                    yield return new CastleQueenSide(from);
-                }
-            }
-            
-        }
-
-        public override bool CanCaptureOpponentKing(Position from, Board board)
-        {
-            return MovePositions(from, board).Any(to =>
-            {
-                Piece piece = board[to];
-                return piece != null && piece.Type == PieceType.King;
-            });
         }
     }
 }

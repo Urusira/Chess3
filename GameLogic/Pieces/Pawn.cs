@@ -122,14 +122,5 @@ namespace GameLogic
         {
             return ForwardMoves(from, board).Concat(DiagonalMoves(from, board));
         }
-
-        public override bool CanCaptureOpponentKing(Position from, Board board)
-        {
-            return DiagonalMoves(from, board).Any(move =>
-            {
-                Piece piece = board[move.ToPos];
-                return piece != null && piece.Type == PieceType.King;
-            });
-        }
     }
 }

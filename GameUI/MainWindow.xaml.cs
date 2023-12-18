@@ -145,14 +145,7 @@ namespace GameUI
 
             if (moveCache.TryGetValue(pos, out Move move))
             {
-                if(move.Type == MoveType.PawnPromotion)
-                {
-                    HandlePromotion(move.FromPos, move.ToPos);
-                }
-                else
-                {
-                    HandleMove(move);
-                }
+                HandleMove(move);
             }
         }
 
@@ -164,28 +157,7 @@ namespace GameUI
             moveLogger[move.kex] = move;
             gameState.MakeMove(move);
             DrawBoard(gameState.Board);
-
-            if (gameState.IsGameOver())
-            {
-                ShowGameOver();
-            }
         }
-        private void HandlePromotion(Position from, Position to)
-        {
-            pieceImages[to.Row, to.Column].Source = Images.GetImage(gameState.CurrentPlayer, PieceType.Pawn);
-            pieceImages[from.Row, from.Column].Source = null;
-
-            PromotionMenu promMenu = new PromotionMenu(gameState.CurrentPlayer);
-            MenuContainer.Content = promMenu;
-
-            promMenu.PieceSelected += type =>
-            {
-                MenuContainer.Content = null;
-                Move promMove = new PawnPromiton(from, to, type);
-                HandleMove(promMove);
-            };
-        }
-
 
         /*
          * Этот метод получает для выбранной фигуры коллекцию всех допустимых ходов для выбранной позиции
@@ -228,12 +200,6 @@ namespace GameUI
             }
         }
 
-        private void Restart_Click(object sender, RoutedEventArgs e)
-        {
-            MenuContainer.Content = null;
-            RestartGame();
-        }
-
         private void Cansel_Click(object sender, RoutedEventArgs e)
         {
             if (moveLogger.Count() > 1)
@@ -251,45 +217,6 @@ namespace GameUI
             moveCache.Clear();
             HideHighLights();
             DrawBoard(gameState.Board);
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        bool IsMenuOnScreen()
-        {
-            return MenuContainer.Content == null;
-        }
-
-        void ShowGameOver()
-        {
-            GameOverMenu gameOverMenu = new GameOverMenu(gameState);
-            MenuContainer.Content = gameOverMenu;
-
-            gameOverMenu.OptionSelected += option =>
-            {
-                if (option == Option.Restart)
-                {
-                    MenuContainer.Content = null;
-                    RestartGame();
-                }
-                else
-                {
-                    Application.Current.Shutdown();
-                }
-            };
-        }
-
-        void RestartGame()
-        {
-            HideHighLights();
-            moveCache.Clear();
-            gameState = new GameState(Player.White, Board.Initial());
-            DrawBoard(gameState.Board);
-            moveLogger.Clear();
-            Cansel_Button.IsEnabled = false;
         }
     }
 }

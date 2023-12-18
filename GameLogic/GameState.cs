@@ -36,43 +36,11 @@ namespace GameLogic
         {
             move.Execute(Board);
             CurrentPlayer = CurrentPlayer.swap();
-            CheckForGameOver();
         }
         public void MakeReverseMove(Move move)
         {
             move.ReverseExecute(Board);
             CurrentPlayer = CurrentPlayer.swap();
-        }
-
-        public IEnumerable<Move> AllLegalMovesFor(Player player)
-        {
-            IEnumerable<Move> moveCandidates = Board.PiecePositionsFor(player).SelectMany(pos =>
-            {
-                Piece piece = Board[pos];
-                return piece.GetMoves(pos, Board);
-            });
-
-            return moveCandidates.Where(move => move.IsLegal(Board));
-        }
-
-        void CheckForGameOver()
-        {
-            if(!AllLegalMovesFor(CurrentPlayer).Any())
-            {
-                if(Board.IsInCheck(CurrentPlayer))
-                {
-                    Result = Result.Win(CurrentPlayer.swap()); 
-                }
-                else
-                {
-                    Result = Result.Draw(EndReason.Stalemate);
-                }
-            }
-        }
-
-        public bool IsGameOver()
-        {
-            return Result != null;
         }
     }
 }
