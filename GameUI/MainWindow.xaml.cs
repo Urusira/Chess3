@@ -112,9 +112,9 @@ namespace GameUI
         // преобразованное в формат клеток доски
         private Position ToSquarePosition(Point point)
         {
-            double squareSize = BoardGrid.ActualWidth / 8;
+            double squareSize = BoardGrid.ActualHeight / 8;
             int row = (int)(point.Y / squareSize);
-            int col = (int)(point.X / squareSize);
+            int col = (int)((point.X - 200) / squareSize);
             return new Position(row, col);
         }
 
@@ -206,13 +206,7 @@ namespace GameUI
          */
         private void ShowHighlights()
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    highlights[i, j].Fill = Brushes.Transparent;
-                }
-            }
+            HideHighLights();
 
             Color color = Color.FromArgb(150, 125, 255, 125);
 
@@ -225,13 +219,22 @@ namespace GameUI
         // В этом же методе перебираются все позиции, находящиеся в данный момент в кеше и их выделение стирается
         private void HideHighLights()
         {
-            foreach (Position to in moveCache.Keys)
+            for (int i = 0; i < 8; i++)
             {
-                highlights[to.Row, to.Column].Fill = Brushes.Transparent;
+                for (int j = 0; j < 8; j++)
+                {
+                    highlights[i, j].Fill = Brushes.Transparent;
+                }
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            MenuContainer.Content = null;
+            RestartGame();
+        }
+
+        private void Cansel_Click(object sender, RoutedEventArgs e)
         {
             if (moveLogger.Count() > 1)
             {
@@ -248,6 +251,11 @@ namespace GameUI
             moveCache.Clear();
             HideHighLights();
             DrawBoard(gameState.Board);
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         bool IsMenuOnScreen()
