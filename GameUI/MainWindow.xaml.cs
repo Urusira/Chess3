@@ -86,15 +86,9 @@ namespace GameUI
          * момент выбранная фигура или нет, вызывает соответствующий метод, передавая позицию клика.
          * Тут же вызывается преобразование позиции курсора
          */
-        private void PieceGrid_MouseDown(object sender, MouseEventArgs e)
+        private void BoardGrid_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!IsMenuOnScreen())
-            {
-                return;
-            }
-
-
-            Point point = e.GetPosition(PieceGrid);
+            Point point = e.GetPosition(BoardGrid);
             Position pos = ToSquarePosition(point);
 
             if (selectedPos == null)
@@ -112,7 +106,7 @@ namespace GameUI
         // преобразованное в формат клеток доски
         private Position ToSquarePosition(Point point)
         {
-            double squareSize = PieceGrid.ActualHeight / 8;
+            double squareSize = BoardGrid.ActualWidth / 8;
             int row = (int)(point.Y / squareSize);
             int col = (int)(point.X / squareSize);
             return new Position(row, col);
@@ -178,8 +172,6 @@ namespace GameUI
          */
         private void ShowHighlights()
         {
-            HideHighLights();
-
             Color color = Color.FromArgb(150, 125, 255, 125);
 
             foreach (Position to in moveCache.Keys)
@@ -191,16 +183,13 @@ namespace GameUI
         // В этом же методе перебираются все позиции, находящиеся в данный момент в кеше и их выделение стирается
         private void HideHighLights()
         {
-            for (int i = 0; i < 8; i++)
+            foreach (Position to in moveCache.Keys)
             {
-                for (int j = 0; j < 8; j++)
-                {
-                    highlights[i, j].Fill = Brushes.Transparent;
-                }
+                highlights[to.Row, to.Column].Fill = Brushes.Transparent;
             }
         }
 
-        private void Cansel_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (moveLogger.Count() > 1)
             {

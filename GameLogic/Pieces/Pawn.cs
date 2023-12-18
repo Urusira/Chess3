@@ -57,7 +57,6 @@ namespace GameLogic
 
         /*
          * Метод отвечает за движение перёд. Если фигура может сходить, то метод возвращает один ход на одну клетку вперёд,
-         * если пешка ходит на последнюю клетку, то происходит преобразование пешку в более сильную фигуру
          * если фигура ранее не ходила, и может сделать ещё один ход, то возвращается ещё один ход сразу же следом.
          */
         private IEnumerable<Move> ForwardMoves(Position from, Board board)
@@ -66,23 +65,13 @@ namespace GameLogic
 
             if (CanMoveTo(oneMovePos, board))
             {
-                if (oneMovePos.Row == 0 || oneMovePos.Row == 7)
-                {
-                    yield return new PawnPromiton(from,oneMovePos, PieceType.Rook);
-                    yield return new PawnPromiton(from,oneMovePos, PieceType.Knight);
-                    yield return new PawnPromiton(from,oneMovePos, PieceType.Bishop);
-                    yield return new PawnPromiton(from,oneMovePos, PieceType.Queen);
-                }
-                else
-                {
-                    yield return new NormalMove(from, oneMovePos);
+                yield return new NormalMove(from, oneMovePos);
 
-                    Position twoMovesPos = oneMovePos + forward;
+                Position twoMovesPos = oneMovePos + forward;
 
-                    if ((from.Row == 6 || from.Row == 1) && CanMoveTo(twoMovesPos, board))
-                    {
-                        yield return new NormalMove(from, twoMovesPos);
-                    }
+                if ((from.Row == 6 || from.Row == 1) && CanMoveTo(twoMovesPos, board))
+                {
+                    yield return new NormalMove(from, twoMovesPos);
                 }
             }
         }
@@ -90,8 +79,7 @@ namespace GameLogic
         /*
          * Меьлж перебирает циклом два диагональных направления (вернее он рассматривает клетку слева и клетку справа
          * относительно клетки перед фигурой), смотрит, может ли фигура съесть ту фигуру, которая будет стоять
-         * слева или справа и возвращает эти позиции как потенциальные ходы,
-         * а также если пешка переходит в последнюю строку, то происходит преобразование пешки в более сильную фигуру
+         * слева или справа и возвращает эти позиции как потенциальные ходы
          */
         private IEnumerable<Move> DiagonalMoves(Position from, Board board)
         {
@@ -101,17 +89,7 @@ namespace GameLogic
 
                 if (CanCaptureAt(to, board))
                 {
-                    if (to.Row == 0 || to.Row == 7)
-                    {
-                        yield return new PawnPromiton(from, to, PieceType.Rook);
-                        yield return new PawnPromiton(from, to, PieceType.Knight);
-                        yield return new PawnPromiton(from, to, PieceType.Bishop);
-                        yield return new PawnPromiton(from, to, PieceType.Queen);
-                    }
-                    else
-                    {
-                        yield return new NormalMove(from, to);
-                    }
+                    yield return new NormalMove(from, to);
                 }
             }
         }

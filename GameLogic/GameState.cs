@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Tracing;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace GameLogic
 {
@@ -7,7 +6,7 @@ namespace GameLogic
     {
         public Board Board { get; }
         public Player CurrentPlayer { get; private set; }
-        public Result Result { get; private set; } = null;
+
         public GameState(Player player, Board board)
         {
             CurrentPlayer = player;
@@ -28,8 +27,7 @@ namespace GameLogic
             }
 
             Piece piece = Board[pos];
-            IEnumerable<Move> moveCandidates = piece.GetMoves(pos, Board);
-            return moveCandidates.Where(move => move.IsLegal(Board));
+            return piece.GetMoves(pos, Board);
         }
 
         public void MakeMove(Move move)

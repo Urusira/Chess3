@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameLogic
 {
-    public class CastleQueenSide : Move
+    public class CastleQueenSide
     {
-
     }
 }
