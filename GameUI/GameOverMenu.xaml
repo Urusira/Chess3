@@ -36,7 +36,7 @@
                        FontSize="16"/>
             
             <Button Grid.Row="2"
-                    Content="RESTART"
+                    Content="Рестарт"
                     Style="{StaticResource ButtonStyle}"
                     Width="80"
                     Height="30"
@@ -44,7 +44,7 @@
             
             <Button Grid.Row="2"
                     Grid.Column="1"
-                    Content="EXIT"
+                    Content="Выход"
                     Style="{StaticResource ButtonStyle}"
                     Width="80"
                     Height="30"

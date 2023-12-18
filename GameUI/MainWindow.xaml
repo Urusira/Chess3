@@ -15,25 +15,42 @@
         дважды кликнуть по самому решению, то есть по GameUI
         Там будут ресурс инклуды, в них прописаны пути к текущим текстуркам
         Сами текстурки лежат в папке assets внутри гейм юи-->
-        <Grid x:Name="BoardGrid" Width="600" Height="600" MouseDown="BoardGrid_MouseDown">
+        <Grid x:Name="BoardGrid" Width="800" Height="600" MouseDown="BoardGrid_MouseDown">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/Board.png"  />
             </Grid.Background>
             <!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
-            <UniformGrid x:Name="HighlightGrid" Width="590" Height="590" Rows="8" Columns="8">
-            </UniformGrid>
+            <UniformGrid x:Name="HighlightGrid" Height="590" Rows="8" Columns="8" Margin="205,5,5,5"/>
             <!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
 
-            <UniformGrid x:Name="PieceGrid" Width="590" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality">
-
-            </UniformGrid>
-            <Button x:Name="Cansel_Button" Content="Back" HorizontalAlignment="Left" Height="28" Margin="404,0,0,0" VerticalAlignment="Center" Width="84"
+            <UniformGrid x:Name="PieceGrid" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality" Margin="205,5,5,5"/>
+            <Button x:Name="Restart_Button" Content="Рестарт" HorizontalAlignment="Left" Height="28" Margin="40,178,0,0" VerticalAlignment="Top" Width="136"
                 Background="#FF64CCF1"
-                Foreground="White"
+                Foreground="Black"
                 FontFamily="Arial"
                 IsEnabled="False"
-                FontSize="20"  Click="Button_Click"/>
-            
+                FontSize="20"  Click="Restart_Click"/>
+
+            <Button x:Name="Cansel_Button" Content="Отмена хода" HorizontalAlignment="Left" Height="28" Margin="40,312,0,0" VerticalAlignment="Top" Width="136"
+                Background="#FF64CCF1"
+                Foreground="Black"
+                FontFamily="Arial"
+                IsEnabled="False"
+                FontSize="20"  Click="Cansel_Click"/>
+
+            <Button x:Name="Exit_Button" Content="Выйти из игры" HorizontalAlignment="Left" Height="28" Margin="35,443,0,0" VerticalAlignment="Top" Width="146"
+                Background="Black"
+                Foreground="black"
+                FontFamily="Arial"
+                IsEnabled="False"
+                FontSize="20"  Click="Exit_Click"/>
+            <TextBlock HorizontalAlignment="Left" Height="43" Margin="6,54,0,0" VerticalAlignment="Top" Width="204"
+                Foreground="white"
+                FontFamily="Arial"
+                IsEnabled="False"
+                FontSize="36">
+                Шахматы 3
+            </TextBlock>
             <ContentControl x:Name="MenuContainer"/>
         </Grid>
     </Viewbox>
