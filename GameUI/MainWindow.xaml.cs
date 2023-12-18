@@ -29,15 +29,6 @@ namespace GameUI
         public MainWindow()
         {
             InitializeComponent();
-            InitializeBoard();
-
-            /*
-             * Здесь инициализируем геймстейт, тем самым запуская игру. Мы вызываем инициализацию доски, а так же
-             * выбираем в качестве текущего игрока того, кто играет за белых. Сразу после отрисовываем доску, отправляя
-             * в метод отрисовки текущую доску. Её состояние храниться как раз таки в геймстейте
-             */
-            gameState = new GameState(Player.White, Board.Initial());
-            DrawBoard(gameState.Board);
         }
 
         /* 
@@ -47,19 +38,6 @@ namespace GameUI
          */
         private void InitializeBoard()
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    Image image = new Image();
-                    pieceImages[i, j] = image;
-                    PieceGrid.Children.Add(image);
-
-                    Rectangle highlight = new Rectangle();
-                    highlights[i, j] = highlight;
-                    HighlightGrid.Children.Add(highlight);
-                }
-            }
         }
 
         /*
@@ -69,16 +47,6 @@ namespace GameUI
          */
         private void DrawBoard(Board board)
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    Piece piece = board[i, j];
-                    pieceImages[i, j].Source = Images.GetImage(piece);
-
-                    HideHighLights();
-                }
-            }
         }
 
         /*
@@ -88,34 +56,14 @@ namespace GameUI
          */
         private void PieceGrid_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!IsMenuOnScreen())
-            {
-                return;
-            }
-
-
-            Point point = e.GetPosition(PieceGrid);
-            Position pos = ToSquarePosition(point);
-
-            if (selectedPos == null)
-            {
-                OnFromPositionSelected(pos);
-            }
-            else
-            {
-                OnToPositionSelected(pos);
-            }
         }
 
-        // "Квадратизирует" позицию клика, мы получаем размер доски, делим на 8, получаем размер квадрата
-        // на полученное значение мы делим положение курсора по X и по Y, возвращает положение курсора
-        // преобразованное в формат клеток доски
+        /* "Квадратизирует" позицию клика, мы получаем размер доски, делим на 8, получаем размер квадрата
+         * на полученное значение мы делим положение курсора по X и по Y, возвращает положение курсора
+         * преобразованное в формат клеток доски
+        */
         private Position ToSquarePosition(Point point)
         {
-            double squareSize = PieceGrid.ActualHeight / 8;
-            int row = (int)(point.Y / squareSize);
-            int col = (int)(point.X / squareSize);
-            return new Position(row, col);
         }
 
         /*
@@ -125,14 +73,6 @@ namespace GameUI
          */
         private void OnFromPositionSelected(Position pos)
         {
-            IEnumerable<Move> moves = gameState.LegalMoves(pos);
-
-            if (moves.Any())
-            {
-                selectedPos = pos;
-                CacheMoves(moves);
-                ShowHighlights();
-            }
         }
 
         /*
@@ -141,49 +81,15 @@ namespace GameUI
          */
         private void OnToPositionSelected(Position pos)
         {
-            selectedPos = null;
-
-            if (moveCache.TryGetValue(pos, out Move move))
-            {
-                if(move.Type == MoveType.PawnPromotion)
-                {
-                    HandlePromotion(move.FromPos, move.ToPos);
-                }
-                else
-                {
-                    HandleMove(move);
-                }
-            }
         }
 
         // Просто хэндл. Почему хэндл? Фиг знает, просто. Вызывает метод совершения хода, говорит геймстейту что игрок хочет
         // сделать ход и передаём ему ход, который хотим. Следом идёт переотрисовка доски.
         private void HandleMove(Move move)
         {
-            Cansel_Button.IsEnabled = true;
-            moveLogger[move.kex] = move;
-            gameState.MakeMove(move);
-            DrawBoard(gameState.Board);
-
-            if (gameState.IsGameOver())
-            {
-                ShowGameOver();
-            }
         }
         private void HandlePromotion(Position from, Position to)
         {
-            pieceImages[to.Row, to.Column].Source = Images.GetImage(gameState.CurrentPlayer, PieceType.Pawn);
-            pieceImages[from.Row, from.Column].Source = null;
-
-            PromotionMenu promMenu = new PromotionMenu(gameState.CurrentPlayer);
-            MenuContainer.Content = promMenu;
-
-            promMenu.PieceSelected += type =>
-            {
-                MenuContainer.Content = null;
-                Move promMove = new PawnPromiton(from, to, type);
-                HandleMove(promMove);
-            };
         }
 
 
@@ -192,12 +98,6 @@ namespace GameUI
          */
         private void CacheMoves(IEnumerable<Move> moves)
         {
-            moveCache.Clear();
-
-            foreach (Move move in moves)
-            {
-                moveCache[move.ToPos] = move;
-            }
         }
 
         /*
@@ -206,90 +106,35 @@ namespace GameUI
          */
         private void ShowHighlights()
         {
-            HideHighLights();
-
-            Color color = Color.FromArgb(150, 125, 255, 125);
-
-            foreach (Position to in moveCache.Keys)
-            {
-                highlights[to.Row, to.Column].Fill = new SolidColorBrush(color);
-            }
         }
 
         // В этом же методе перебираются все позиции, находящиеся в данный момент в кеше и их выделение стирается
         private void HideHighLights()
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    highlights[i, j].Fill = Brushes.Transparent;
-                }
-            }
         }
 
         private void Restart_Click(object sender, RoutedEventArgs e)
         {
-            MenuContainer.Content = null;
-            RestartGame();
         }
 
         private void Cansel_Click(object sender, RoutedEventArgs e)
         {
-            if (moveLogger.Count() > 1)
-            {
-                gameState.MakeReverseMove(moveLogger.Values.Last());
-                moveLogger.Remove(moveLogger.Values.Last().kex);
-            }
-            else
-            {
-                gameState.MakeReverseMove(moveLogger.Values.Last());
-                moveLogger.Remove(moveLogger.Values.Last().kex);
-                Cansel_Button.IsEnabled = false;
-            }
-            selectedPos = null;
-            moveCache.Clear();
-            HideHighLights();
-            DrawBoard(gameState.Board);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
         }
 
         bool IsMenuOnScreen()
         {
-            return MenuContainer.Content == null;
         }
 
         void ShowGameOver()
         {
-            GameOverMenu gameOverMenu = new GameOverMenu(gameState);
-            MenuContainer.Content = gameOverMenu;
-
-            gameOverMenu.OptionSelected += option =>
-            {
-                if (option == Option.Restart)
-                {
-                    MenuContainer.Content = null;
-                    RestartGame();
-                }
-                else
-                {
-                    Application.Current.Shutdown();
-                }
-            };
         }
 
         void RestartGame()
         {
-            HideHighLights();
-            moveCache.Clear();
-            gameState = new GameState(Player.White, Board.Initial());
-            DrawBoard(gameState.Board);
-            moveLogger.Clear();
-            Cansel_Button.IsEnabled = false;
         }
     }
 }

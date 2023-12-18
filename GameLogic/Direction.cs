@@ -22,15 +22,12 @@
         // Конструктор класса, инициализирует значения и записывает их в свойствах
         public Direction(int rowDelta, int columnDelta)
         {
-            RowDelta = rowDelta;
-            ColumnDelta = columnDelta;
         }
         
         // Переопределяем оператор умножения, чтобы можно было с его помощью масштабировать направления
         // Вроде бы это ещё называют перегруженными операторами...
         public static Direction operator *(int scalar, Direction dir)
         {
-            return new Direction(scalar * dir.RowDelta, scalar * dir.ColumnDelta);
         }
     }
 }

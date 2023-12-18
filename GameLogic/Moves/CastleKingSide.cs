@@ -19,26 +19,13 @@ namespace GameLogic
 
         public CastleKingSide(Position kingPos)
         {
-            FromPos = kingPos;
-            ToPos = new Position(kingPos.Row, 6);
-            rookFromPos = new Position(kingPos.Row, 7);
-            rookToPos = new Position(kingPos.Row, 5);
-            kex = Guid.NewGuid().ToString();
         }
 
         public override void Execute(Board board)
         {
-            new NormalMove(FromPos, ToPos).Execute(board);
-            new NormalMove(rookFromPos, rookToPos).Execute(board);
         }
         public override void ReverseExecute(Board board)
         {
-            board[rookFromPos] = board[rookToPos];
-            board[rookFromPos].HasMoved = false;
-            board[rookToPos] = null;
-            board[FromPos] = board[ToPos];
-            board[FromPos].HasMoved = false;
-            board[ToPos] = null;
         }
     }
 }

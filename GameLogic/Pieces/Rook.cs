@@ -9,24 +9,16 @@
         // Массив направлений, по которым может двигаться ладья
         private static readonly Direction[] dirs = new Direction[]
         {
-            Direction.North,
-            Direction.South,
-            Direction.East,
-            Direction.West
         };
 
         //  Чтобы задать свойство цвета используется конструктор
         public Rook(Player color)
         {
-            Color = color;
         }
 
         //  Далее применяем метод Copy, в нём создаётся новый экземпляр фигуры с заданными параметрами
         public override Piece Copy()
         {
-            Rook copy = new Rook(Color);
-            copy.HasMoved = HasMoved;
-            return copy;
         }
 
         /*
@@ -36,7 +28,6 @@
          */
         public override IEnumerable<Move> GetMoves(Position from, Board board)
         {
-            return MovePositionsInDirs(from, board, dirs).Select(to => new NormalMove(from, to));
         }
     }
 }

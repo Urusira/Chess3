@@ -20,9 +20,6 @@ namespace GameLogic
         // В конструкторе запиываем полученные позиции начальной и конечной позиций хода
         public NormalMove(Position from, Position to)
         {
-            FromPos = from;
-            ToPos = to;
-            kex = Guid.NewGuid().ToString();
         }
 
         /*
@@ -31,19 +28,6 @@ namespace GameLogic
          */
         public override void Execute(Board board)
         {
-            Piece piece = board[FromPos];
-            Piece eaten = board[ToPos];
-            if (board[ToPos] != null)
-            {
-                EatenPiece = eaten;
-            }
-            else
-            {
-                EatenPiece = null;
-            }
-            board[ToPos] = piece;
-            board[FromPos] = null;
-            piece.HasMoved = true;
         }
         /*
          * Метод отмены хода, он обратен соврешённому ходу. Он помещает на координаты куда ходила фигура ту, что была съедена
@@ -51,9 +35,6 @@ namespace GameLogic
          */
         public override void ReverseExecute(Board board)
         {
-            Piece piece = board[ToPos];
-            board[FromPos] = piece;
-            board[ToPos] = EatenPiece;
         }
     }
 }

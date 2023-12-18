@@ -10,8 +10,6 @@
         // Конструктор, принимающий строку и столбец и сохраняющий их в свойствах
         public Position(int row, int column)
         {
-            Row = row;
-            Column = column;
         }
 
         // Получаем хэш-код, чтобы класс позиции можно было использовать в качестве ключа в словаре, весьма удобно.
@@ -30,28 +28,16 @@
 
         public static bool operator ==(Position left, Position right)
         {
-            return EqualityComparer<Position>.Default.Equals(left, right);
         }
 
         public static bool operator !=(Position left, Position right)
         {
-            return !(left == right);
         }
 
         // Перегрузка оператора +, позволяет добавлять к текущей позиции по вертикали и горизонтали разницу,
         // между ней и новой позицией
         public static Position operator +(Position pos, Direction dir)
         {
-            return new Position(pos.Row + dir.RowDelta, pos.Column + dir.ColumnDelta);
         }
-
-        /* Если по простому, то теперь мы можем написать выражение типа:
-        
-        Position from = new Position(0, 4);
-        Position to = from + 3 * Direction.SouthEast;
-
-        Такое выражение позволяет переместить фигуру из позиции 0 по вертикали и 4 по горизонтали
-        на 3 клетки в направлении юго-востока, то есть сходить по диагонали вправо-вниз на 3 клетки  
-         */
     }
 }

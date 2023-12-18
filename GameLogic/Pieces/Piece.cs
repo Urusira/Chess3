@@ -33,29 +33,6 @@ namespace GameLogic
          */
         protected IEnumerable<Position> MovePositionsInDir(Position from, Board board, Direction dir)
         {
-            // В цикле мы как бы идём в заданном направлении по одной клетке за раз до тех пор,
-            // пока не натолкнёмся на границу поля
-            for (Position pos = from + dir; Board.IsInside(pos); pos += dir)
-            {
-                // Если текущая позиция пуста, то принимаем её и двигаемся дальше
-                if (board.IsEmpty(pos))
-                {
-                    yield return pos;
-                    continue;
-                }
-
-                // В случае нахождения фигуры, мы получаем её
-                Piece piece = board[pos];
-
-                // Если её цвет не равен цвету текущей фигуры, то возвращаем эту позицию
-                if (piece.Color != Color)
-                {
-                    yield return pos;
-                }
-
-                // И досрочно завершаем цикл
-                yield break;
-            }
         }
 
         /*
@@ -64,16 +41,10 @@ namespace GameLogic
          */
         protected IEnumerable<Position> MovePositionsInDirs(Position from, Board board, Direction[] dirs)
         {
-            return dirs.SelectMany(dir => MovePositionsInDir(from, board, dir));
         }
 
         public virtual bool CanCaptureOpponentKing(Position from, Board board)
         {
-            return GetMoves(from, board).Any(move =>
-            {
-                Piece piece = board[move.ToPos];
-                return piece != null && piece.Type == PieceType.King;
-            });
         }
     }
 }

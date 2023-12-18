@@ -17,12 +17,6 @@ namespace GameLogic
     {
         public static Player swap(this Player Current_player)
         {
-            switch (Current_player)
-            {
-                case Player.White: return Player.Black;
-                case Player.Black: return Player.White;
-                default: return Current_player;
-            }
         }
     }
 }

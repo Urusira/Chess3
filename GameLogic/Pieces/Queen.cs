@@ -9,28 +9,16 @@
         // Массив направлений, по которым может двигаться ферзь
         private static readonly Direction[] dirs = new Direction[]
         {
-            Direction.North,
-            Direction.South,
-            Direction.East,
-            Direction.West,
-            Direction.NortWest,
-            Direction.NortEast,
-            Direction.SouthWest,
-            Direction.SouthEast
         };
 
         //  Чтобы задать свойство цвета используется конструктор
         public Queen(Player color)
         {
-            Color = color;
         }
 
         //  Далее применяем метод Copy, в нём создаётся новый экземпляр фигуры с заданными параметрами
         public override Piece Copy()
         {
-            Queen copy = new Queen(Color);
-            copy.HasMoved = HasMoved;
-            return copy;
         }
 
         /*
@@ -40,7 +28,6 @@
          */
         public override IEnumerable<Move> GetMoves(Position from, Board board)
         {
-            return MovePositionsInDirs(from, board, dirs).Select(to => new NormalMove(from, to));
         }
     }
 }
