@@ -101,13 +101,13 @@ namespace GameUI
             {
                 Position pos = ToSquarePosition(point);
 
-                if (selectedPos == null)
+                if (selectedPos != null && selectedPos != pos)
                 {
-                    OnFromPositionSelected(pos);
+                    OnToPositionSelected(pos);
                 }
                 else
                 {
-                    OnToPositionSelected(pos);
+                    OnFromPositionSelected(pos);
                 }
             }
             
@@ -147,10 +147,10 @@ namespace GameUI
          */
         private void OnToPositionSelected(Position pos)
         {
-            selectedPos = null;
-
+            
             if (moveCache.TryGetValue(pos, out Move move))
             {
+                selectedPos = null;
                 if(move.Type == MoveType.PawnPromotion)
                 {
                     HandlePromotion(move.FromPos, move.ToPos);
