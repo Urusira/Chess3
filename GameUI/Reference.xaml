@@ -6,12 +6,8 @@
         xmlns:local="clr-namespace:GameUI"
         mc:Ignorable="d"
         Title="Правила игры" Height="600" Width="770">
-    <Border 
-    Background="#320808"
-    
-    >
+    <Border Background="#320808">
         <Grid RenderOptions.BitmapScalingMode="HighQuality" Margin="-4,-4,-4,-4">
-
             <TextBlock Text="Правила игры"
                Style="{StaticResource TextStyle}"
                FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Height="41" Margin="0,4,0,0"/>
