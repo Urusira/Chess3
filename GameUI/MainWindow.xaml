@@ -22,32 +22,70 @@
             <!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
             <UniformGrid x:Name="HighlightGrid" Height="590" Rows="8" Columns="8" Margin="205,5,5,5"/>
             <!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
-
             <UniformGrid x:Name="PieceGrid" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality" Margin="205,5,5,5"/>
-            <Button x:Name="Restart_Button" Content="Рестарт" HorizontalAlignment="Left" Height="28" Margin="40,178,0,0" VerticalAlignment="Top" Width="136"
+
+            <Button x:Name="Restart_Button" Content="Рестарт" HorizontalAlignment="Left" Height="28" Margin="34,179,0,0" VerticalAlignment="Top" Width="136"
                 Background="#EDEBED"
                 Foreground="Black"
                 FontFamily="Arial"
                 FontSize="20"  Click="Restart_Click"/>
 
-            <Button x:Name="Cansel_Button" Content="Отмена хода" HorizontalAlignment="Left" Height="28" Margin="40,312,0,0" VerticalAlignment="Top" Width="136"
+            <Button x:Name="Cansel_Button" Content="Отмена хода" HorizontalAlignment="Left" Height="28" Margin="32,317,0,0" VerticalAlignment="Top" Width="136"
                 Background="#EDEBED"
                 Foreground="Black"
                 FontFamily="Arial"
                 IsEnabled="False"
                 FontSize="20"  Click="Cansel_Click"/>
 
-            <Button x:Name="Exit_Button" Content="Выйти из игры" HorizontalAlignment="Left" Height="28" Margin="35,443,0,0" VerticalAlignment="Top" Width="146"
+            <Button x:Name="Exit_Button" Content="Выйти из игры" HorizontalAlignment="Left" Height="28" Margin="27,456,0,0" VerticalAlignment="Top" Width="146"
                 Background="#EDEBED"
                 Foreground="black"
                 FontFamily="Arial"
                 FontSize="20"  Click="Exit_Click"/>
-            <TextBlock HorizontalAlignment="Left" Height="43" Margin="6,54,0,0" VerticalAlignment="Top" Width="204"
+            <TextBlock HorizontalAlignment="Left" Height="43" Margin="0,78,0,0" VerticalAlignment="Top" Width="205"
                 Foreground="white"
                 FontFamily="Arial"
-                FontSize="36">
-                Шахматы 3
+                FontSize="36"
+                TextAlignment="Center">
+    Шахматы 3
             </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="111" Margin="0,499,0,0" VerticalAlignment="Top" Width="200"
+                Foreground="white"
+                FontFamily="Arial"
+                FontSize="18"
+                TextAlignment="Center"
+                TextWrapping="Wrap" >
+    Авторы:
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="29" Margin="0,523,0,0" VerticalAlignment="Top" Width="200"
+            Foreground="white"
+            FontFamily="Arial"
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap" >
+Листопад Вадим
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="29" Margin="0,547,0,0" VerticalAlignment="Top" Width="205"
+            Foreground="white"
+            FontFamily="Arial"
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap" >
+Шабанов Михаил
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="30" Margin="0,569,0,0" VerticalAlignment="Top" Width="205"
+            Foreground="white"
+            FontFamily="Arial"
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap" >
+Тюканов Владислав
+            </TextBlock>
+            <Image x:Name="Reference" Source="Assets/Ask.png" Margin="0,1,760,559" RenderTransformOrigin="3.066,-2.561"
+                   
+                   MouseDown="Reference_MouseDown"
+                   />
+
             <ContentControl x:Name="MenuContainer"/>
         </Grid>
     </Viewbox>

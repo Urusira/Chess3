@@ -12,9 +12,11 @@
   </ItemGroup>
 
 	<ItemGroup>
+    <Resource Include="Assets\Ask.png" />
 		<Resource Include="Assets\BishopB.png" />
 		<Resource Include="Assets\BishopW.png" />
 		<Resource Include="Assets\Board.png" />
+		<Resource Include="Assets\Exit.png" />
 		<Resource Include="Assets\Icon.png" />
 		<Resource Include="Assets\KingB.png" />
 		<Resource Include="Assets\KingW.png" />

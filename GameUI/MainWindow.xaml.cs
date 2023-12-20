@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -20,9 +21,9 @@ namespace GameUI
     {
         private readonly Image[,] pieceImages = new Image[8, 8]; // Массив изображений
         private readonly Rectangle[,] highlights = new Rectangle[8, 8];
-        private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
+        private  Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
-        private GameState gameState;    // Создаём гейм стейт
+        public GameState gameState;    // Создаём гейм стейт
         private Position selectedPos = null;
         private Dictionary<string, Move> moveLogger = new Dictionary<string, Move>();
 
@@ -90,21 +91,26 @@ namespace GameUI
         {
             if (!IsMenuOnScreen())
             {
+                
                 return;
             }
 
-
             Point point = e.GetPosition(BoardGrid);
-            Position pos = ToSquarePosition(point);
 
-            if (selectedPos == null)
+            if (point.X >= 200)
             {
-                OnFromPositionSelected(pos);
+                Position pos = ToSquarePosition(point);
+
+                if (selectedPos == null)
+                {
+                    OnFromPositionSelected(pos);
+                }
+                else
+                {
+                    OnToPositionSelected(pos);
+                }
             }
-            else
-            {
-                OnToPositionSelected(pos);
-            }
+            
         }
 
         // "Квадратизирует" позицию клика, мы получаем размер доски, делим на 8, получаем размер квадрата
@@ -291,5 +297,12 @@ namespace GameUI
             moveLogger.Clear();
             Cansel_Button.IsEnabled = false;
         }
+
+        private void Reference_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Reference re = new Reference();
+            re.Show();
+        }
+
     }
 }
