@@ -148,6 +148,7 @@ namespace GameUI
         private void OnToPositionSelected(Position pos)
         {
             selectedPos = null;
+            HideHighLights();
 
             if (moveCache.TryGetValue(pos, out Move move))
             {
