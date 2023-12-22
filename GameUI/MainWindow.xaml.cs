@@ -287,7 +287,7 @@ namespace GameUI
                             }
                     }
                     char[] cols = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-                    char[] rows = { '1', '2', '3', '4', '5', '6', '7', '8' };
+                    char[] rows = { '8', '7', '6', '5', '4', '3', '2', '1' };
                     char[] from = new char[2];
                     from[0] = cols[move.FromPos.Column];
                     from[1] = rows[move.FromPos.Row];
@@ -405,7 +405,7 @@ namespace GameUI
                         }
                 }
                 char[] cols = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-                char[] rows = { '1', '2', '3', '4', '5', '6', '7', '8' };
+                char[] rows = { '8', '7', '6', '5', '4', '3', '2', '1' };
                 char[] From = new char[2];
                 From[0] = cols[from.Column];
                 From[1] = rows[from.Row];
