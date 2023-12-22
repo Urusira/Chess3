@@ -188,7 +188,7 @@ namespace GameUI
             {
                 Logger.Text = player + "совершил рокировку\n" + Logger.Text;
             }
-            else {
+            else if (move.Type == MoveType.Normal){
                     string piece, word = "съел ", eaten = "";
                     if (gameState.Board[move.ToPos] == null)
                     {
@@ -342,7 +342,7 @@ namespace GameUI
 
             promMenu.PieceSelected += type =>
             {
-                string player, word = "съев", eaten = "",piece;
+                string player, word = "съев ", eaten = "",piece;
                 if (gameState.CurrentPlayer == Player.White)
                 {
                     player = "Белый превратил пешку ";
