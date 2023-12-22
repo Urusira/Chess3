@@ -24,13 +24,13 @@
             <!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
             <UniformGrid x:Name="PieceGrid" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality" Margin="205,5,5,5"/>
 
-            <Button x:Name="Restart_Button" Content="Рестарт" HorizontalAlignment="Left" Height="28" Margin="34,179,0,0" VerticalAlignment="Top" Width="136"
+            <Button x:Name="Restart_Button" Content="Рестарт" HorizontalAlignment="Left" Height="28" Margin="32,133,0,0" VerticalAlignment="Top" Width="136"
                 Background="#EDEBED"
                 Foreground="Black"
                 FontFamily="Arial"
                 FontSize="20"  Click="Restart_Click"/>
 
-            <Button x:Name="Cansel_Button" Content="Отмена хода" HorizontalAlignment="Left" Height="28" Margin="32,317,0,0" VerticalAlignment="Top" Width="136"
+            <Button x:Name="Cansel_Button" Content="Отмена хода" HorizontalAlignment="Left" Height="28" Margin="35,410,0,0" VerticalAlignment="Top" Width="135"
                 Background="#EDEBED"
                 Foreground="Black"
                 FontFamily="Arial"
@@ -42,13 +42,27 @@
                 Foreground="black"
                 FontFamily="Arial"
                 FontSize="20"  Click="Exit_Click"/>
-            <TextBlock HorizontalAlignment="Left" Height="43" Margin="0,78,0,0" VerticalAlignment="Top" Width="205"
+            <TextBlock HorizontalAlignment="Left" Height="43" Margin="0,46,0,0" VerticalAlignment="Top" Width="205"
                 Foreground="white"
                 FontFamily="Arial"
                 FontSize="36"
                 TextAlignment="Center">
     Шахматы 3
             </TextBlock>
+
+            <TextBlock x:Name="NameLogger"
+            Text="История ходов" FontSize="20"
+            Foreground="white" FontFamily="Arial"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,174,0,0"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                     
+                    Margin="10,210,600,220">
+                <TextBlock x:Name="Logger" Background="#880015"
+                           TextWrapping="Wrap" TextAlignment="Center" Padding="3,3,3,3"
+                           FontSize="15" Foreground="white" FontFamily="Arial" 
+                           />
+            </ScrollViewer>
+
             <TextBlock HorizontalAlignment="Left" Height="111" Margin="0,499,0,0" VerticalAlignment="Top" Width="200"
                 Foreground="white"
                 FontFamily="Arial"

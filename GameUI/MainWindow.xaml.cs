@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,15 +24,18 @@ namespace GameUI
         private readonly Rectangle[,] highlights = new Rectangle[8, 8];
         private  Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
+
         public GameState gameState;    // Создаём гейм стейт
         private Position selectedPos = null;
         private Dictionary<string, Move> moveLogger = new Dictionary<string, Move>();
+        //TextBlock Logger = new TextBlock();
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeBoard();
 
+            Logger.Text = "Ходов не было.\n";
             /*
              * Здесь инициализируем геймстейт, тем самым запуская игру. Мы вызываем инициализацию доски, а так же
              * выбираем в качестве текущего игрока того, кто играет за белых. Сразу после отрисовываем доску, отправляя
@@ -167,13 +171,164 @@ namespace GameUI
         // сделать ход и передаём ему ход, который хотим. Следом идёт переотрисовка доски.
         private void HandleMove(Move move)
         {
+            if (!Cansel_Button.IsEnabled)
+            {
+                Logger.Text = "";
+            }
+            string player;
+            if (gameState.CurrentPlayer == Player.White)
+            {
+                player = "Белый ";
+            }
+            else
+            {
+                player = "Черный ";
+            }
+            if (move.Type == MoveType.CastleQueenSide || move.Type == MoveType.CastleKingSide)
+            {
+                Logger.Text = player + "совершил рокировку\n" + Logger.Text;
+            }
+            else {
+                    string piece, word = "съел ", eaten = "";
+                    if (gameState.Board[move.ToPos] == null)
+                    {
+                        word = "сходил на ";
+                    }
+                    else
+                    {
+                        switch (gameState.Board[move.ToPos].Type)
+                        {
+                            case PieceType.Pawn:
+                                {
+                                    eaten = "пешку ";
+                                    break;
+                                }
+                            case PieceType.Rook:
+                                {
+                                    eaten = "ладью ";
+                                    break;
+                                }
+                            case PieceType.Knight:
+                                {
+                                    eaten = "коня ";
+                                    break;
+                                }
+                            case PieceType.Bishop:
+                                {
+                                    eaten = "слона ";
+                                    break;
+                                }
+                            default:
+                                {
+                                    eaten = "ферзя ";
+                                    break;
+                                }
+                        }
+                    }
+                    switch (gameState.Board[move.FromPos].Type)
+                    {
+                        case PieceType.Pawn:
+                            {
+                                if (player == "Белый ")
+                                {
+                                    player = "Белая ";
+                                }
+                                else {
+                                    player = "Черная ";
+                                }
+                                if (word == "съел ")
+                                {
+                                    word = "съела ";
+                                }
+                                else {
+                                    word = "сходила на ";
+                                }
+                                piece = "пешка ";
+                                break;
+                            }
+                        case PieceType.Rook:
+                            {
+                                if (player == "Белый ")
+                                {
+                                    player = "Белая ";
+                                }
+                                else {
+                                    player = "Черная ";
+                                }
+                                if (word == "съел ")
+                                {
+                                    word = "съела ";
+                                }
+                                else {
+                                    word = "сходила на ";
+                                }
+                                piece = "ладья ";
+                                break;
+                            }
+                        case PieceType.Knight:
+                            {
+                                piece = "конь ";
+                                break;
+                            }
+                        case PieceType.Bishop:
+                            {
+                                piece = "слон ";
+                                break;
+                            }
+                        case PieceType.Queen:
+                            {
+                                piece = "ферзь ";
+                                break;
+                            }
+                        default:
+                            {
+                                piece = "король ";
+                                break;
+                            }
+                    }
+                    char[] cols = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+                    char[] rows = { '1', '2', '3', '4', '5', '6', '7', '8' };
+                    char[] from = new char[2];
+                    from[0] = cols[move.FromPos.Column];
+                    from[1] = rows[move.FromPos.Row];
+                    char[] to = new char[2];
+                    to[0] = cols[move.ToPos.Column];
+                    to[1] = rows[move.ToPos.Row];
+                    Logger.Text = player + piece + from[0] + from[1] + ' ' + word + eaten + to[0] + to[1] + ".\n" + Logger.Text;
+                }
             Cansel_Button.IsEnabled = true;
             moveLogger[move.kex] = move;
             gameState.MakeMove(move);
             DrawBoard(gameState.Board);
+            if (gameState.Board.IsInCheck(gameState.CurrentPlayer))
+            {
+                if (gameState.CurrentPlayer == Player.Black)
+                {
+                    Logger.Text = "Белый поставил шах!" + Logger.Text;
+                }
+                else
+                {
+                    Logger.Text = "Черный поставил шах!" + Logger.Text;
+                }
+            }
 
             if (gameState.IsGameOver())
             {
+                if(gameState.Board.IsInCheck(gameState.CurrentPlayer))
+                {
+                    if (gameState.CurrentPlayer == Player.Black)
+                    {
+                        Logger.Text = "Белый поставил мат!" + Logger.Text;
+                    }
+                    else
+                    {
+                        Logger.Text = "Черный поставил мат!" + Logger.Text;
+                    }
+                }
+                else
+                {
+                    Logger.Text = "Результат игры - пат!" + Logger.Text;
+                }
                 ShowGameOver();
             }
         }
@@ -187,6 +342,77 @@ namespace GameUI
 
             promMenu.PieceSelected += type =>
             {
+                string player, word = "съев", eaten = "",piece;
+                if (gameState.CurrentPlayer == Player.White)
+                {
+                    player = "Белый превратил пешку ";
+                }
+                else
+                {
+                    player = "Черный превратил пешку ";
+                }
+                if (gameState.Board[to] == null)
+                {
+                    word = "сходив на ";
+                }
+                else
+                {
+                    switch (gameState.Board[to].Type)
+                    {
+                        case PieceType.Rook:
+                        {
+                            eaten = "ладью ";
+                            break;
+                        }
+                        case PieceType.Knight:
+                        {
+                            eaten = "коня ";
+                            break;
+                        }
+                        case PieceType.Bishop:
+                        {
+                            eaten = "слона ";
+                            break;
+                        }
+                        default:
+                        {
+                            eaten = "ферзя ";
+                            break;
+                        }
+                    }
+                }
+                switch (type)
+                {
+                    case PieceType.Rook:
+                        {
+                            piece = "ладью ";
+                            break;
+                        }
+                    case PieceType.Knight:
+                        {
+                            piece = "коня ";
+                            break;
+                        }
+                    case PieceType.Bishop:
+                        {
+                            piece = "слона ";
+                            break;
+                        }
+                    default:
+                        {
+                            piece = "ферзя ";
+                            break;
+                        }
+                }
+                char[] cols = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+                char[] rows = { '1', '2', '3', '4', '5', '6', '7', '8' };
+                char[] From = new char[2];
+                From[0] = cols[from.Column];
+                From[1] = rows[from.Row];
+                char[] To = new char[2];
+                To[0] = cols[to.Column];
+                To[1] = rows[to.Row];
+                Logger.Text = player + From[0] + From[1] + " в " + piece + word + eaten + To[0] + To[1] + ".\n" + Logger.Text;
                 MenuContainer.Content = null;
                 Move promMove = new PawnPromiton(from, to, type);
                 HandleMove(promMove);
@@ -254,6 +480,7 @@ namespace GameUI
                 moveLogger.Remove(moveLogger.Values.Last().kex);
                 Cansel_Button.IsEnabled = false;
             }
+            Logger.Text = "Ход отменен.\n" + Logger.Text;
             selectedPos = null;
             moveCache.Clear();
             HideHighLights();
@@ -296,6 +523,7 @@ namespace GameUI
             gameState = new GameState(Player.White, Board.Initial());
             DrawBoard(gameState.Board);
             moveLogger.Clear();
+            Logger.Text = "Ходов не было.\n";
             Cansel_Button.IsEnabled = false;
         }
 
