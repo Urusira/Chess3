@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Курсовой проект: Шахматы 3: Класс GameLogic.Direction</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Icon.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Курсовой проект: Шахматы 3
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="pages.html"><span>Описания</span></a></li>
+      <li><a href="namespaces.html"><span>Пакеты</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Пространства имен</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>События</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_game_logic.html">GameLogic</a></li><li class="navelem"><a class="el" href="class_game_logic_1_1_direction.html">Direction</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-static-methods">Открытые статические члены</a> &#124;
+<a href="#pub-static-attribs">Статические открытые данные</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_game_logic_1_1_direction-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс GameLogic.Direction</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:ac8000fc11c9370ebd169209e61bd651a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#ac8000fc11c9370ebd169209e61bd651a">Direction</a> (int rowDelta, int columnDelta)</td></tr>
+<tr class="memdesc:ac8000fc11c9370ebd169209e61bd651a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор класса, инициализирует значения и записывает их в свойствах  <a href="#ac8000fc11c9370ebd169209e61bd651a">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac8000fc11c9370ebd169209e61bd651a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:a964d1897b4ec3f248f98ed2d34adeef8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#a964d1897b4ec3f248f98ed2d34adeef8">operator*</a> (int scalar, <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> dir)</td></tr>
+<tr class="separator:a964d1897b4ec3f248f98ed2d34adeef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Статические открытые данные</h2></td></tr>
+<tr class="memitem:ad4090a05306f1dbfa223fbffbaa2cbc9"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#ad4090a05306f1dbfa223fbffbaa2cbc9">North</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(-1, 0)</td></tr>
+<tr class="memdesc:ad4090a05306f1dbfa223fbffbaa2cbc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Здесь задаём направления для движения по горизонтали, вертикали и диагоналям  <a href="#ad4090a05306f1dbfa223fbffbaa2cbc9">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad4090a05306f1dbfa223fbffbaa2cbc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d82bcccc9d55a42d99a7e90e282c1a1"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#a8d82bcccc9d55a42d99a7e90e282c1a1">South</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(1, 0)</td></tr>
+<tr class="separator:a8d82bcccc9d55a42d99a7e90e282c1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adec0f4b133c5df71787baacc0ddaf30c"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#adec0f4b133c5df71787baacc0ddaf30c">West</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(0, -1)</td></tr>
+<tr class="separator:adec0f4b133c5df71787baacc0ddaf30c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd290b4e2fabe924940b30b332fb954"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#adcd290b4e2fabe924940b30b332fb954">East</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(0, 1)</td></tr>
+<tr class="separator:adcd290b4e2fabe924940b30b332fb954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c95476971d932e557d40c35f756499"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#a34c95476971d932e557d40c35f756499">NortWest</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(-1, -1)</td></tr>
+<tr class="separator:a34c95476971d932e557d40c35f756499"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a772751d81333ebf1c5add747be9ae778"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#a772751d81333ebf1c5add747be9ae778">NortEast</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(-1, 1)</td></tr>
+<tr class="separator:a772751d81333ebf1c5add747be9ae778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abce7062780f8e5df778156dca4fb8594"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#abce7062780f8e5df778156dca4fb8594">SouthWest</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(1, -1)</td></tr>
+<tr class="separator:abce7062780f8e5df778156dca4fb8594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac587e69b02a63e4c6bb8f9949ebdda22"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#ac587e69b02a63e4c6bb8f9949ebdda22">SouthEast</a> = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(1, 1)</td></tr>
+<tr class="separator:ac587e69b02a63e4c6bb8f9949ebdda22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:acc567c2229137dbab995784d6c8a133d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#acc567c2229137dbab995784d6c8a133d">RowDelta</a><code> [get]</code></td></tr>
+<tr class="separator:acc567c2229137dbab995784d6c8a133d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b53c6c0cbd9a1e511815affa453b56e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_direction.html#a5b53c6c0cbd9a1e511815affa453b56e">ColumnDelta</a><code> [get]</code></td></tr>
+<tr class="separator:a5b53c6c0cbd9a1e511815affa453b56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Этот класс будет удобен, так как фигуры движутся в определённых направлениях. Мы просто будем говорить фигурам: "Иди на N клеток на НАЗВАНИЕ НАПРАВЛЕНИЯ (напр. Север, Запал, Юго-Восток) </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="ac8000fc11c9370ebd169209e61bd651a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameLogic.Direction.Direction </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rowDelta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>columnDelta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конструктор класса, инициализирует значения и записывает их в свойствах </p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a class="anchor" id="a964d1897b4ec3f248f98ed2d34adeef8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.operator* </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scalar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_game_logic_1_1_direction.html">Direction</a>&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Переопределяем оператор умножения, чтобы можно было с его помощью масштабировать направления Вроде бы это ещё называют перегруженными операторами... </p>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a class="anchor" id="adcd290b4e2fabe924940b30b332fb954"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.East = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(0, 1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a772751d81333ebf1c5add747be9ae778"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.NortEast = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(-1, 1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad4090a05306f1dbfa223fbffbaa2cbc9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.North = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(-1, 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Здесь задаём направления для движения по горизонтали, вертикали и диагоналям </p>
+
+</div>
+</div>
+<a class="anchor" id="a34c95476971d932e557d40c35f756499"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.NortWest = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(-1, -1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8d82bcccc9d55a42d99a7e90e282c1a1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.South = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(1, 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac587e69b02a63e4c6bb8f9949ebdda22"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.SouthEast = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(1, 1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abce7062780f8e5df778156dca4fb8594"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.SouthWest = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(1, -1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adec0f4b133c5df71787baacc0ddaf30c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_game_logic_1_1_direction.html">Direction</a> GameLogic.Direction.West = new <a class="el" href="class_game_logic_1_1_direction.html">Direction</a>(0, -1)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Полный список свойств</h2>
+<a class="anchor" id="a5b53c6c0cbd9a1e511815affa453b56e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameLogic.Direction.ColumnDelta</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acc567c2229137dbab995784d6c8a133d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameLogic.Direction.RowDelta</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Представим направления как дельта строки и дельта столбца. По факту это означает изменение столбца и строки по сравнению с заданным значением </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>C:/Users/Admin/source/repos/Urusira/Chess3/GameLogic/<a class="el" href="_direction_8cs.html">Direction.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по Курсовой проект: Шахматы 3. Последние изменения: Сб 23 Дек 2023 22:02:12. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

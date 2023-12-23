@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Курсовой проект: Шахматы 3: Класс GameLogic.GameState</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Icon.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Курсовой проект: Шахматы 3
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="pages.html"><span>Описания</span></a></li>
+      <li><a href="namespaces.html"><span>Пакеты</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Классы</span></a></li>
+      <li><a href="classes.html"><span>Алфавитный&#160;указатель&#160;классов</span></a></li>
+      <li><a href="hierarchy.html"><span>Иерархия&#160;классов</span></a></li>
+      <li><a href="functions.html"><span>Члены&#160;классов</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Указатель</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Классы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Пространства имен</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Файлы</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Функции</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Переменные</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Перечисления</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Элементы перечислений</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Свойства</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>События</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Страницы</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_game_logic.html">GameLogic</a></li><li class="navelem"><a class="el" href="class_game_logic_1_1_game_state.html">GameState</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_game_logic_1_1_game_state-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс GameLogic.GameState</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a8e700d6efa1cd1b9a385de3df61180d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a8e700d6efa1cd1b9a385de3df61180d6">GameState</a> (<a class="el" href="namespace_game_logic.html#aef99ef9e65dea2f93e430f3697ec9343">Player</a> player, <a class="el" href="class_game_logic_1_1_board.html">Board</a> board)</td></tr>
+<tr class="separator:a8e700d6efa1cd1b9a385de3df61180d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b5e804c9069afde1e539859f926d208"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_game_logic_1_1_move.html">Move</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a2b5e804c9069afde1e539859f926d208">LegalMoves</a> (<a class="el" href="class_game_logic_1_1_position.html">Position</a> pos)</td></tr>
+<tr class="separator:a2b5e804c9069afde1e539859f926d208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c40a21cfa036a90c296e7f1a64dff7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a43c40a21cfa036a90c296e7f1a64dff7">MakeMove</a> (<a class="el" href="class_game_logic_1_1_move.html">Move</a> move)</td></tr>
+<tr class="separator:a43c40a21cfa036a90c296e7f1a64dff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c54ffb7c27774edf96c63859a96abd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#af6c54ffb7c27774edf96c63859a96abd">MakeReverseMove</a> (<a class="el" href="class_game_logic_1_1_move.html">Move</a> move)</td></tr>
+<tr class="separator:af6c54ffb7c27774edf96c63859a96abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a0c4a7ff1df0a4a1f9d8b451dcf9197"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_game_logic_1_1_move.html">Move</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a0a0c4a7ff1df0a4a1f9d8b451dcf9197">AllLegalMovesFor</a> (<a class="el" href="namespace_game_logic.html#aef99ef9e65dea2f93e430f3697ec9343">Player</a> player)</td></tr>
+<tr class="separator:a0a0c4a7ff1df0a4a1f9d8b451dcf9197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b79166379a36468cfeaa942812808f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a4b79166379a36468cfeaa942812808f2">IsGameOver</a> ()</td></tr>
+<tr class="separator:a4b79166379a36468cfeaa942812808f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:a528f6d83add23fdf78857f49fd67d05f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_logic_1_1_board.html">Board</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a528f6d83add23fdf78857f49fd67d05f">Board</a><code> [get]</code></td></tr>
+<tr class="separator:a528f6d83add23fdf78857f49fd67d05f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2b50df042f1f7d613a76a7449083def"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_game_logic.html#aef99ef9e65dea2f93e430f3697ec9343">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#ae2b50df042f1f7d613a76a7449083def">CurrentPlayer</a><code> [get]</code></td></tr>
+<tr class="separator:ae2b50df042f1f7d613a76a7449083def"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a366c12c7ce94bbce8c3b95cdc3ac9575"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_logic_1_1_result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_logic_1_1_game_state.html#a366c12c7ce94bbce8c3b95cdc3ac9575">Result</a><code> [get]</code></td></tr>
+<tr class="separator:a366c12c7ce94bbce8c3b95cdc3ac9575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="a8e700d6efa1cd1b9a385de3df61180d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameLogic.GameState.GameState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_game_logic.html#aef99ef9e65dea2f93e430f3697ec9343">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_game_logic_1_1_board.html">Board</a>&#160;</td>
+          <td class="paramname"><em>board</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a class="anchor" id="a0a0c4a7ff1df0a4a1f9d8b451dcf9197"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_game_logic_1_1_move.html">Move</a>&gt; GameLogic.GameState.AllLegalMovesFor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_game_logic.html#aef99ef9e65dea2f93e430f3697ec9343">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4b79166379a36468cfeaa942812808f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameLogic.GameState.IsGameOver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2b5e804c9069afde1e539859f926d208"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_game_logic_1_1_move.html">Move</a>&gt; GameLogic.GameState.LegalMoves </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_logic_1_1_position.html">Position</a>&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>В этом методе мы получаем все возможные ходы для заданной позиции. В случае, если идёт попытка рассчёта для пустой клетки или фигуры цвета, не соответствующего текущему игроку, метод ничего не делает, выдавая пустоту. Если же всё в порядке, то метод получает фигуру в заданной позиции и вызывает у неё метод получения всех ходов. </p>
+
+</div>
+</div>
+<a class="anchor" id="a43c40a21cfa036a90c296e7f1a64dff7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameLogic.GameState.MakeMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_logic_1_1_move.html">Move</a>&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af6c54ffb7c27774edf96c63859a96abd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameLogic.GameState.MakeReverseMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_logic_1_1_move.html">Move</a>&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Полный список свойств</h2>
+<a class="anchor" id="a528f6d83add23fdf78857f49fd67d05f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_logic_1_1_board.html">Board</a> GameLogic.GameState.Board</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae2b50df042f1f7d613a76a7449083def"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_game_logic.html#aef99ef9e65dea2f93e430f3697ec9343">Player</a> GameLogic.GameState.CurrentPlayer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a366c12c7ce94bbce8c3b95cdc3ac9575"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_logic_1_1_result.html">Result</a> GameLogic.GameState.Result</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>C:/Users/Admin/source/repos/Urusira/Chess3/GameLogic/<a class="el" href="_game_state_8cs.html">GameState.cs</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по Курсовой проект: Шахматы 3. Последние изменения: Сб 23 Дек 2023 22:02:12. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>
