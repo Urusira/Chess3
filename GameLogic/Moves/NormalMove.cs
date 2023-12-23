@@ -1,5 +1,6 @@
 ﻿/**
   @file NormalMove.cs
+  @page NormalMove
   @brief Класс нормального хода из точки А в точку В
   @author Листопад В.
 \par Наследует класс:

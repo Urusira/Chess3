@@ -1,14 +1,14 @@
 ﻿/**
   @file CastleKingSide.cs
+  @page CastleKingSide
   @brief Класс хода - рокировки со стороны короля
   @author Шабанов М.
-\par Наследует класс:
-  @ref Move
 \par Использует классы:
 - @ref Position
 - @ref MoveType
 - @ref NormalMove
 - @ref Board
+- @ref CastleKingSide
 \par Содержит класс:
   @ref CastleKingSide
 */

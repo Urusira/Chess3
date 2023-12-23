@@ -1,5 +1,6 @@
 ﻿/**
-  @file Board.cs
+  @file Direction.cs
+  @page Direction
   @brief Класс направлений, по которым могут ходить фигуры
   @author Листопад В.
 \par Содержит класс:

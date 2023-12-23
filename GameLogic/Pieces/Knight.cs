@@ -1,5 +1,6 @@
 ﻿/**
   @file Knight.cs
+  @page Knight
   @brief Класс фигуры - коня
   @author Листопад В.
 \par Наследует класс:

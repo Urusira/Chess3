@@ -1,5 +1,6 @@
 ﻿/**
   @file GameOverMenu.xaml.cs
+  @page GameOverMenu
   @brief Класс окна с объявлением победителя в матче
   @author Тюканов В.
 \par Использует классы:

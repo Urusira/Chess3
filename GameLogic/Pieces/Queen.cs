@@ -1,5 +1,6 @@
 ﻿/**
   @file Queen.cs
+  @page Queen
   @brief Класс фигуры - королевы
   @author Листопад В.
 \par Наследует класс:

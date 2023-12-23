@@ -1,5 +1,6 @@
 ﻿/**
   @file PromotionMenu.xaml.cs
+  @page PromotionMenu
   @brief Класс окна с выбором фигуры, для повышения пешки
   @author Шабанов М.
 \par Использует классы:

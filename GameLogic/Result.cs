@@ -1,5 +1,6 @@
 ﻿/**
   @file Result.cs
+  @page Result
   @brief Класс результата игры
   @author Тюканов В.
 \par Содержит класс:

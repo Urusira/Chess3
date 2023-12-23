@@ -1,5 +1,6 @@
 ﻿/**
   @file CastleQueenSide.cs
+  @page CastleQueenSide
   @brief Класс хода - рокировки со стороны королевы
   @author Шабанов М.
 \par Наследует класс:

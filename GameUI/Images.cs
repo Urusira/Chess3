@@ -1,5 +1,6 @@
 ﻿/**
-  @file Board.cs
+  @file Images.cs
+  @page Images
   @brief Класс доски - игрового поля с фигурами
   @author Листопад В.
 \par Использует классы:

@@ -1,5 +1,6 @@
 ﻿/**
   @file Rook.cs
+  @page Rook
   @brief Класс фигуры - ладьи
   @author Листопад В.
 \par Наследует класс:

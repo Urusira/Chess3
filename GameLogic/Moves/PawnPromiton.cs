@@ -1,5 +1,6 @@
 ﻿/**
   @file PawnPromiton.cs
+  @page PawnPromiton
   @brief Класс хода - повышения пешки
   @author Шабанов М.
 \par Наследует класс:

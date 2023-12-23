@@ -1,5 +1,6 @@
 ﻿/**
   @file Bishop.cs
+  @page Bishop
   @brief Класс фигуры - слона
   @author Листопад В.
 \par Наследует класс:

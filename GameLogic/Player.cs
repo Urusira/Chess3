@@ -1,5 +1,6 @@
 ﻿/**
   @file Player.cs
+  @page Player
   @brief Класс игрока
   @author Листопад В., Шабанов М.
 \par Содержит класс:
@@ -8,11 +9,14 @@
 
 namespace GameLogic
 {
+    /**
+        @brief Типы игроков
+    */
     public enum Player
     {
-        None,
-        White,
-        Black
+        None,   /**< Отсутсвует */
+        White,  /**< Белый */
+        Black   /**< Чёрный */
     }
 
     public static class PlayerExtensions

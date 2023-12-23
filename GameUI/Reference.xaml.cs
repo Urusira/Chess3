@@ -1,5 +1,6 @@
 ﻿/**
   @file Reference.xaml.cs
+  @page Reference
   @brief Класс окна со справкой
   @author Шабанов М.
 \par Содержит класс:

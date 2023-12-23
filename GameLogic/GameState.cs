@@ -1,5 +1,6 @@
 ﻿/**
   @file GameState.cs
+  @page GameState
   @brief Класс игрового состояния
   @author Листопад В., Тюканов В.
 \par Использует классы:
