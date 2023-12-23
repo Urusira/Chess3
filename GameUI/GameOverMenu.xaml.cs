@@ -1,13 +1,25 @@
-﻿using GameLogic;
+﻿/**
+  @file GameOverMenu.xaml.cs
+  @brief Класс окна с объявлением победителя в матче
+  @author Тюканов В.
+\par Использует классы:
+- @ref Result
+- @ref Option
+- @ref Player
+- @ref EndReason
+- @ref GameState
+\par Содержит класс:
+  @ref GameOverMenu
+*/
+
+
+using GameLogic;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace GameUI
 {
-    /// <summary>
-    /// Логика взаимодействия для GameOverMenu.xaml
-    /// </summary>
     public partial class GameOverMenu : UserControl
     {
         public event Action<Option> OptionSelected;

@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file NormalMove.cs
+  @brief Класс нормального хода из точки А в точку В
+  @author Листопад В.
+\par Наследует класс:
+  @ref Move
+\par Использует классы:
+- @ref Position
+- @ref MoveType
+- @ref NormalMove
+- @ref Board
+- @ref Piece
+\par Содержит класс:
+  @ref NormalMove
+*/
 
 namespace GameLogic
 {
     public class NormalMove : Move
     {
-        // Перезаписываем все характеристики наследованного класса
+        /// Перезаписываем все характеристики наследованного класса
         public override MoveType Type => MoveType.Normal;
         public override Position FromPos { get; set; }
         public override Position ToPos { get; set; }
@@ -17,7 +26,7 @@ namespace GameLogic
 
         public Piece EatenPiece = null;
 
-        // В конструкторе запиываем полученные позиции начальной и конечной позиций хода
+        /// В конструкторе запиываем полученные позиции начальной и конечной позиций хода
         public NormalMove(Position from, Position to)
         {
             FromPos = from;
@@ -25,10 +34,9 @@ namespace GameLogic
             kex = Guid.NewGuid().ToString();
         }
 
-        /*
-         * Метод реализации хода, он выполняет сам ход, перемещает фигуру из начальной позиции
-         * в конечную, после чего стирает содержимое начальной позиции и сообщает, что фигура была перемещена
-         */
+        /** Метод реализации хода, он выполняет сам ход, перемещает фигуру из начальной позиции
+            в конечную, после чего стирает содержимое начальной позиции и сообщает, что фигура была перемещена
+        */
         public override void Execute(Board board)
         {
             Piece piece = board[FromPos];
@@ -45,9 +53,9 @@ namespace GameLogic
             board[FromPos] = null;
             piece.HasMoved = true;
         }
-        /*
-         * Метод отмены хода, он обратен соврешённому ходу. Он помещает на координаты куда ходила фигура ту, что была съедена
-         * и возвращает сходившую фигуру на её предыдущую позицию
+
+        /** Метод отмены хода, он обратен соврешённому ходу. Он помещает на координаты куда ходила фигура ту, что была съедена
+            и возвращает сходившую фигуру на её предыдущую позицию
          */
         public override void ReverseExecute(Board board)
         {

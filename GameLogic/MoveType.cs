@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file MoveType.cs
+  @brief Перечисление типов ходов
+  @author Листопад В.
+*/
 
 namespace GameLogic
 {

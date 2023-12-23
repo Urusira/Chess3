@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file EndReason.cs
+  @brief Перечисление причин окончания матча
+  @author Тюканов В.
+*/
 
 namespace GameLogic
 {

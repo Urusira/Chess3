@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file Player.cs
+  @brief Класс игрока
+  @author Листопад В., Шабанов М.
+\par Содержит класс:
+  @ref PlayerExtensions
+*/
 
 namespace GameLogic
 {

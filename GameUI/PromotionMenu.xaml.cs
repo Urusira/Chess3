@@ -1,25 +1,22 @@
-﻿using GameLogic;
+﻿/**
+  @file PromotionMenu.xaml.cs
+  @brief Класс окна с выбором фигуры, для повышения пешки
+  @author Шабанов М.
+\par Использует классы:
+- @ref Image
+- @ref Player
+- @ref PieceType
+\par Содержит класс:
+  @ref PromotionMenu
+*/
+
+using GameLogic;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GameUI
 {
-    /// <summary>
-    /// Логика взаимодействия для PromotionMenu.xaml
-    /// </summary>
     public partial class PromotionMenu : UserControl
     {
         public event Action<PieceType> PieceSelected;

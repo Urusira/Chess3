@@ -1,22 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file CastleKingSide.cs
+  @brief Класс хода - рокировки со стороны короля
+  @author Шабанов М.
+\par Наследует класс:
+  @ref Move
+\par Использует классы:
+- @ref Position
+- @ref MoveType
+- @ref NormalMove
+- @ref Board
+\par Содержит класс:
+  @ref CastleKingSide
+*/
 
 namespace GameLogic
 {
-    // Рокировка со стороны короля
+    /// Класс рокировки со стороны короля
     public class CastleKingSide : Move
     {
-        public override MoveType Type => MoveType.CastleKingSide;
-        public override Position FromPos { get; set; }
-        public override Position ToPos { get; set; }
-        public override string kex { get; }
+        public override MoveType Type => MoveType.CastleKingSide;   ///< Определяем тип хода
+        public override Position FromPos { get; set; }   ///< Откуда ходит фигура
+        public override Position ToPos { get; set; }   ///< Куда ходит фигура
+        public override string kex { get; }         ///< Уникальный идентификатор хода
 
-        private readonly Position rookFromPos;
-        private readonly Position rookToPos;
+        private readonly Position rookFromPos;   ///< Откуда ходит ладья
+        private readonly Position rookToPos;   ///< Куда ходит ладья
 
+        /// Конструктор
+        /** Создаёт экземпляр хода типа "Рокировка со стороны короля"
+        \param kingPos Позиция короля
+        */
         public CastleKingSide(Position kingPos)
         {
             FromPos = kingPos;
@@ -26,11 +39,20 @@ namespace GameLogic
             kex = Guid.NewGuid().ToString();
         }
 
+        /// Переопределённый метод запуска хода
+        /** Запускает сконструированный ход
+        \param board Текущее игровое поле
+        */
         public override void Execute(Board board)
         {
             new NormalMove(FromPos, ToPos).Execute(board);
             new NormalMove(rookFromPos, rookToPos).Execute(board);
         }
+
+        /// Переопределённый метод запуска обратного хода
+        /** Отменяет совершённый ход данного типа
+        \param board Текущее игровое поле
+        */
         public override void ReverseExecute(Board board)
         {
             board[rookFromPos] = board[rookToPos];

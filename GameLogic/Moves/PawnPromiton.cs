@@ -1,13 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file PawnPromiton.cs
+  @brief Класс хода - повышения пешки
+  @author Шабанов М.
+\par Наследует класс:
+  @ref Move
+\par Использует классы:
+- @ref Position
+- @ref MoveType
+- @ref NormalMove
+- @ref Board
+- @ref Piece
+\par Содержит класс:
+  @ref PawnPromiton
+*/
+
 
 namespace GameLogic
 {
-    // Преборазование пешки в более сильную фигуру
+    /// Преборазование пешки в более сильную фигуру
     public class PawnPromiton : Move
     {
         public override MoveType Type => MoveType.PawnPromotion;
@@ -17,9 +27,9 @@ namespace GameLogic
 
         public Piece EatenPiece = null;
         public Piece piece;
-        // Тип новой фигуры
-        private readonly PieceType newType;
         
+        private readonly PieceType newType; ///< Тип новой фигуры
+
         public PawnPromiton(Position from, Position to, PieceType newType)
         {
             FromPos = from;

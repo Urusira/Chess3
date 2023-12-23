@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+  @file Reference.xaml.cs
+  @brief Класс окна со справкой
+  @author Шабанов М.
+\par Содержит класс:
+  @ref Reference
+*/
+
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GameUI
 {
-    /// <summary>
-    /// Логика взаимодействия для Reference.xaml
-    /// </summary>
     public partial class Reference : Window
     {
         public Reference()

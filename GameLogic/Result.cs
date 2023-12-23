@@ -1,4 +1,12 @@
-﻿namespace GameLogic
+﻿/**
+  @file Result.cs
+  @brief Класс результата игры
+  @author Тюканов В.
+\par Содержит класс:
+  @ref Result
+*/
+
+namespace GameLogic
 {
     public class Result
     {
