@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogic", "GameLogic\GameLogic.csproj", "{C82B2F1D-32B7-4C13-878E-AF0BF6675637}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameUI", "GameUI\GameUI.csproj", "{EE5D95C9-BFBA-4EFF-9560-2C915A296B32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess 3", "GameUI\Chess 3.csproj", "{EE5D95C9-BFBA-4EFF-9560-2C915A296B32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{641C2CE5-0FAC-4F59-B7DF-F0FBD88CD0C4}"
 	ProjectSection(SolutionItems) = preProject
