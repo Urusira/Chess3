@@ -1,4 +1,5 @@
-﻿namespace GameLogic
+﻿
+namespace GameLogic
 {
     public enum Player
     {
