@@ -93,7 +93,7 @@ namespace GameLogic
                 }
             }
         }
-
+        // Меьлж
         // Метод реализации хода, передаёт в метод получения ходов все найденные ранее ходы + возможности есть по диагоналям,
         // если таковые имеются
         public override IEnumerable<Move> GetMoves(Position from, Board board)
