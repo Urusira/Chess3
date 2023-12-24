@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Chess 3" Width="800" SizeToContent="Height"
+        Title="Chess 3" Width="800" Height="600"  SizeToContent="Height"
         Icon="Assets/icon.png"
         WindowStartupLocation="CenterScreen"
         Background="#202020">
@@ -15,18 +15,92 @@
         дважды кликнуть по самому решению, то есть по GameUI
         Там будут ресурс инклуды, в них прописаны пути к текущим текстуркам
         Сами текстурки лежат в папке assets внутри гейм юи-->
-        <Grid x:Name="BoardGrid" Width="600" Height="600" MouseDown="BoardGrid_MouseDown">
+        <Grid x:Name="BoardGrid" Width="800" Height="600" MouseDown="BoardGrid_MouseDown">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/Board.png"  />
             </Grid.Background>
-<!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
-            <UniformGrid x:Name="HighlightGrid" Width="590" Height="590" Rows="8" Columns="8">
-            </UniformGrid>
-<!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
+            <!--Униформная сетка 8 на 8, нужна будет чтобы подсвечивать всякое-->
+            <UniformGrid x:Name="HighlightGrid" Height="590" Rows="8" Columns="8" Margin="205,5,5,5"/>
+            <!--Тут униформная сетка 8 на 8, в ней будут помещаться фигуры-->
+            <UniformGrid x:Name="PieceGrid" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality" Margin="205,5,5,5"/>
 
-            <UniformGrid x:Name="PieceGrid" Width="590" Height="590" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality">
+            <Button x:Name="Restart_Button" Content="Рестарт" HorizontalAlignment="Left" Height="28" Margin="32,133,0,0" VerticalAlignment="Top" Width="136"
+                Background="#EDEBED"
+                Foreground="Black"
+                FontFamily="Arial"
+                FontSize="20"  Click="Restart_Click"/>
 
-            </UniformGrid>
+            <Button x:Name="Cansel_Button" Content="Отмена хода" HorizontalAlignment="Left" Height="28" Margin="35,410,0,0" VerticalAlignment="Top" Width="135"
+                Background="#EDEBED"
+                Foreground="Black"
+                FontFamily="Arial"
+                IsEnabled="False"
+                FontSize="20"  Click="Cansel_Click"/>
+
+            <Button x:Name="Exit_Button" Content="Выйти из игры" HorizontalAlignment="Left" Height="28" Margin="27,456,0,0" VerticalAlignment="Top" Width="146"
+                Background="#EDEBED"
+                Foreground="black"
+                FontFamily="Arial"
+                FontSize="20"  Click="Exit_Click"/>
+            <TextBlock HorizontalAlignment="Left" Height="43" Margin="0,46,0,0" VerticalAlignment="Top" Width="205"
+                Foreground="white"
+                FontFamily="Arial"
+                FontSize="36"
+                TextAlignment="Center">
+    Шахматы 3
+            </TextBlock>
+
+            <TextBlock x:Name="NameLogger"
+            Text="История ходов" FontSize="20"
+            Foreground="white" FontFamily="Arial"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,174,0,0"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                     
+                    Margin="10,210,600,220">
+                <TextBlock x:Name="Logger" Background="#880015"
+                           TextWrapping="Wrap" TextAlignment="Center" Padding="3,3,3,3"
+                           FontSize="15" Foreground="white" FontFamily="Arial" 
+                           />
+            </ScrollViewer>
+
+            <TextBlock HorizontalAlignment="Left" Height="111" Margin="0,499,0,0" VerticalAlignment="Top" Width="200"
+                Foreground="white"
+                FontFamily="Arial"
+                FontSize="18"
+                TextAlignment="Center"
+                TextWrapping="Wrap" >
+    Авторы:
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="29" Margin="0,523,0,0" VerticalAlignment="Top" Width="200"
+            Foreground="white"
+            FontFamily="Arial"
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap" >
+Листопад Вадим
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="29" Margin="0,547,0,0" VerticalAlignment="Top" Width="205"
+            Foreground="white"
+            FontFamily="Arial"
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap" >
+Шабанов Михаил
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="30" Margin="0,569,0,0" VerticalAlignment="Top" Width="205"
+            Foreground="white"
+            FontFamily="Arial"
+            FontSize="18"
+            TextAlignment="Center"
+            TextWrapping="Wrap" >
+Тюканов Владислав
+            </TextBlock>
+            <Image x:Name="Reference" Source="Assets/Ask.png" Margin="0,1,760,559" RenderTransformOrigin="3.066,-2.561"
+                   
+                   MouseDown="Reference_MouseDown"
+                   />
+
+            <ContentControl x:Name="MenuContainer"/>
         </Grid>
     </Viewbox>
 </Window>

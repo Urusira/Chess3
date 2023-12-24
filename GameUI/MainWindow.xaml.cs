@@ -1,16 +1,25 @@
-﻿using System;
+﻿/**
+  @file MainWindow.xaml.cs
+  @page MainWindow
+  @brief Класс главного окна, взаимодействует с интерфейсом и соединяет программу воедино
+  @author Листопад В., Тюканов В., Шабанов М.
+\par Использует классы:
+- @ref Piece
+- @ref Image
+- @ref Move
+- @ref Player
+- @ref Position
+- @ref GameState
+\par Содержит класс:
+  @ref MainWindow
+*/
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GameLogic;
 
@@ -18,141 +27,50 @@ namespace GameUI
 {
     public partial class MainWindow : Window
     {
-        private readonly Image[,] pieceImages = new Image[8, 8]; // Массив изображений
-        private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
-
-        private GameState gameState;    // Создаём гейм стейт
-        private Position selectedPos = null;
-
         public MainWindow()
         {
             InitializeComponent();
-            InitializeBoard();
 
-            /*
-             * Здесь инициализируем геймстейт, тем самым запуская игру. Мы вызываем инициализацию доски, а так же
-             * выбираем в качестве текущего игрока того, кто играет за белых. Сразу после отрисовываем доску, отправляя
-             * в метод отрисовки текущую доску. Её состояние храниться как раз таки в геймстейте
-             */
-            gameState = new GameState(Player.White, Board.Initial());
-            DrawBoard(gameState.Board);
+            Logger.Text = "Ходов не было.\n";
         }
 
-        /* 
-         * Этот метод при запуске помещает в каждый квадрат сетки элемент "изображение", это всё позволит легко
-         *  получить доступ к управлению изображением в заданном квадрате. Например выставить нужный спрайт фигуры в квадрате,
-         *  координаты которого соответствуют координате какой-либо фигуры
+        /// Обработка клика по кнопке рестарта
+        /** Стандартный обработчик клика по кнопке, убирает меню с экрана и
+            вызывает метод рестарта игры.
+        \param sender
+        \param e
          */
-        private void InitializeBoard()
+        private void Restart_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for(int j = 0; j < 8; j++)
-                {
-                    Image image = new Image();
-                    pieceImages[i, j] = image;
-                    PieceGrid.Children.Add(image);
-                }
-            }
         }
 
-        /*
-         * Данный метод отрисовывает доску принимая её саму в качестве параметра
-         * Мы проходимся по всей доске, получаем фигуру в каждой из позиций и на каждую позицию
-         * вызываем метод из класса вывода изображения, по сути именно здесь идёт уже отрисовка фигур на нужных позициях
+        /// Обработка клика по кнопке отмены хода
+        /** Стандартный обработчик клика по кнопке, если у нас в логе содержатся
+            какие то ходы, то для последнего хода в списке вызывается его метод обратного хода.
+            Если у нас единственный ход в словаре, то он отменяется, а кнопка отмены блокируется.
+            Тут же конструируется соответствующее сообщение для лога.
+            Вызывается очистка кэша ходов, скрывается подсветка если таковая имеется и вызывает отрисовку доски.
+        \param sender
+        \param e
          */
-        private void DrawBoard(Board board)
+        private void Cansel_Click(object sender, RoutedEventArgs e)
         {
-            for( int i = 0;i < 8; i++)
-            {
-                for( int j = 0; j < 8;j++)
-                {
-                    Piece piece = board[i,j];
-                    pieceImages[i,j].Source = Images.GetImage(piece);
-                }
-            }
         }
 
-        /*
-         * Метод обрабатывает нажатия клавишей мыши внутри окна и в зависимости от того, есть в данный
-         * момент выбранная фигура или нет, вызывает соответствующий метод, передавая позицию клика.
-         * Тут же вызывается преобразование позиции курсора
+        /// Обработка клика по кнопке выхода
+        /** Стандартный обработчик клика по кнопке, вызывает стандартный метод завершения приложения
+        \param sender
+        \param e
          */
-        private void BoardGrid_MouseDown(object sender, MouseEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Point point = e.GetPosition(BoardGrid);
-            Position pos = ToSquarePosition(point);
-
-            if (selectedPos == null)
-            {
-                OnFromPositionSelected(pos);
-            }
-            else
-            {
-                OnToPositionSelected(pos);
-            }
+            Application.Current.Shutdown();
         }
 
-        // "Квадратизирует" позицию клика, мы получаем размер доски, делим на 8, получаем размер квадрата
-        // на полученное значение мы делим положение курсора по X и по Y, возвращает положение курсора
-        // преобразованное в формат клеток доски
-        private Position ToSquarePosition(Point point)
+        private void Reference_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            double squareSize = BoardGrid.ActualWidth / 8;
-            int row = (int)(point.Y / squareSize);
-            int col = (int)(point.X / squareSize);
-            return new Position(row, col);
-        }
-
-        /*
-         * Вызывается в случае, если выбранной позиции нет, то есть метод отвечает за выбор
-         * фигуры, которой мы хотим сходить. При его вызове, происходит проссчёт всех возможных ходов для фигуры в заданной позиции.
-         * Так же вызываемый метод LegalMoves не возвращает ничего, если выбрана фигура противника или пустая клетка.
-         */
-        private void OnFromPositionSelected(Position pos)
-        {
-            IEnumerable<Move> moves = gameState.LegalMoves(pos);
-
-            if (moves.Any())
-            {
-                selectedPos = pos;
-                CacheMoves(moves);
-            }
-        }
-
-        /*
-         * Этот метод соотносит нажатие пользователя. Он смотрит, есть ли в данный момент в кэше ход для позиции клика
-         * Если такой ход существует, то этот ход передаётся в хэндл, который и реализует ход
-         */
-        private void OnToPositionSelected(Position pos)
-        {
-            selectedPos = null;
-
-            if (moveCache.TryGetValue(pos, out Move move))
-            {
-                HandleMove(move);
-            }
-        }
-
-        // Просто хэндл. Почему хэндл? Фиг знает, просто. Вызывает метод совершения хода, говорит геймстейту что игрок хочет
-        // сделать ход и передаём ему ход, который хотим. Следом идёт переотрисовка доски.
-        private void HandleMove(Move move)
-        {
-            gameState.MakeMove(move);
-            DrawBoard(gameState.Board);
-        }
-
-        /*
-         * Этот метод получает для выбранной фигуры коллекцию всех допустимых ходов для выбранной позиции
-         */
-        private void CacheMoves(IEnumerable<Move> moves)
-        {
-            moveCache.Clear();
-
-            foreach (Move move in moves)
-            {
-                moveCache[move.ToPos] = move;
-            }
+            Reference re = new Reference();
+            re.Show();
         }
     }
 }
