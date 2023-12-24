@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['cancaptureopponentking',['CanCaptureOpponentKing',['../class_game_logic_1_1_king.html#a108e53055fae476357f384930ff013bc',1,'GameLogic.King.CanCaptureOpponentKing()'],['../class_game_logic_1_1_pawn.html#adf91074cf4016ec033d63c9a9dda3258',1,'GameLogic.Pawn.CanCaptureOpponentKing()'],['../class_game_logic_1_1_piece.html#a3ac5c830534394b1efe57c0bbd6b1a25',1,'GameLogic.Piece.CanCaptureOpponentKing()']]],
-  ['castlekingside',['CastleKingSide',['../class_game_logic_1_1_castle_king_side.html#a9dc9c023f3b89bff99afeca3e2d1be62',1,'GameLogic::CastleKingSide']]],
-  ['castlequeenside',['CastleQueenSide',['../class_game_logic_1_1_castle_queen_side.html#a39d1df15a49f82d0dab25f8f393035b5',1,'GameLogic::CastleQueenSide']]],
-  ['copy',['Copy',['../class_game_logic_1_1_board.html#a77f0120956a68e3ac0bf5e1048915b42',1,'GameLogic.Board.Copy()'],['../class_game_logic_1_1_bishop.html#a464b0691ea27865bec66f6fce1a0a479',1,'GameLogic.Bishop.Copy()'],['../class_game_logic_1_1_king.html#a593e2d246d8156cc5231bcbea9b0d7c3',1,'GameLogic.King.Copy()'],['../class_game_logic_1_1_knight.html#a4c85a00d91f7b6c6ac504b491592d305',1,'GameLogic.Knight.Copy()'],['../class_game_logic_1_1_pawn.html#a034ad346fa3c4831477b3b173d7efd40',1,'GameLogic.Pawn.Copy()'],['../class_game_logic_1_1_piece.html#ab593fbcee0c905a2648d67b13e5b0d28',1,'GameLogic.Piece.Copy()'],['../class_game_logic_1_1_queen.html#abab5e1db17aca29e0159937520c440d7',1,'GameLogic.Queen.Copy()'],['../class_game_logic_1_1_rook.html#a714c66b7021771ca7f0079d19be179bc',1,'GameLogic.Rook.Copy()']]]
-];
